@@ -16,6 +16,7 @@
 <body>
     <div id="top-header">
         <div class="content-center">
+            <div id="header-logo"><img src="img/shop.svg" alt="Shop"/></div>
             <div id="header-logo"><img src="img/fondanti-logo.png" alt="Fondanti logo"/></div>
             <div id="header-phone-number"><p><a href="http://www.facebook.com/fondanti"><img src="img/facebook_logo.png" alt="Fondanti on Facebook"/></a><a href="tel:+31616064485"><img src="img/white_phone.png" alt="white phone"/><span>0616064485</span></a></p></div>
         </div>
