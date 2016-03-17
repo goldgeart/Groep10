@@ -1,0 +1,44 @@
+﻿@{
+
+  var Account = "";
+  var Password = "";
+
+    if(!IsPost){
+          var db = Database.Open("FONDANTI2");
+          var Account = "SELECT AccountName FROM Account";
+          var Password = "SELECT Password FROM Account";
+    }
+    if(IsPost){
+        if(Account == Request.Form["Username"] && Password == Request.Form["Password"]){
+            Responds.Redirect("/Admin.cshtml");
+        }
+        else{
+            Validation.AddFromError("Username or Password is invalid");
+        }
+
+    }
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        <h1>Login pagina</h1>
+        @Html.ValidationSummary()
+        <form method="post">
+        <fieldset>
+        <legend>Admin portaal login</legend>
+        
+        <p><label for="Username">Username:</label>
+            <input type="text" name="Username" value=""/></p>
+        
+        <p><label for="Password">Password:</label>
+            <input type="text" name="Password" value=""/></p>
+        
+        <p><input type="submit" name="buttonSubmit" value="Login"/></p></fieldset></form>
+    </body>
+</html>
