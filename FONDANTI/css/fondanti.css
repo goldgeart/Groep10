@@ -61,6 +61,10 @@ p{
     position: static;
 }
 
+#BodyLogin {
+    margin-left: 5%;
+}
+
 @media screen and (max-width: 1200px) {
     .content-center {
         width: 90%;
