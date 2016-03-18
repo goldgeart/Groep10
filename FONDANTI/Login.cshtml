@@ -1,12 +1,5 @@
 ﻿@{
   var db = Database.Open("FONDANTI2");
-<<<<<<< HEAD
-  var SelectAccount = "SELECT ID FROM Account WHERE AccountName='@0' AND Password='@1'";
-  var SelectData = "SELECT * FROM Account WHERE AccountName='Test' AND Password='Test1'";
-  var SelectedData = db.Query(SelectData);
-  var grid = new WebGrid(source: SelectedData );
-=======
->>>>>>> de704a6d693cd805d175497587062099878391f0
 
     if(IsPost){
 
@@ -14,15 +7,6 @@
         string pwd = Request.Form["Password"];
         var userpass = db.QueryValue("SELECT Password FROM Account WHERE AccountName=@0", usrname);
 
-<<<<<<< HEAD
-        if(Account != null){
-            Response.Redirect("/Admin.cshtml");
-            Validation.AddFormError("" + Account + " | " + usrname + " | " + pwd + " | " + SelectAccount);
-           }
-
-}
-    }
-=======
         if(userpass == null){
              Validation.AddFormError("Gebruikersnaam of wachtwoord is onjuist.");
            }
@@ -32,7 +16,7 @@
     }
 }
 
->>>>>>> de704a6d693cd805d175497587062099878391f0
+
 <!DOCTYPE html>
 
 <html lang="en">

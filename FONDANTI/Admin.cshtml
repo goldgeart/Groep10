@@ -1,15 +1,80 @@
 ﻿@{
-    
+    var db = Database.Open("FONDANTI2") ;
+
+    var selectCommandTaartbekleding = "SELECT * FROM Taartbekleding";
+    var selectCommandTaartdecoratie = "SELECT * FROM Taartdecoratie";
+    var selectCommandTaarttype = "SELECT * FROM Taarttype";
+    var selectCommandTaartvulling = "SELECT * FROM Taartvulling";
+
+    var selectedDataTaartbekleding = db.Query(selectCommandTaartbekleding);
+    var selectedDataTaartdecoratie = db.Query(selectCommandTaartdecoratie);
+    var selectedDataTaarttype = db.Query(selectCommandTaarttype);
+    var selectedDataTaartvulling = db.Query(selectCommandTaartvulling);
+
+    var gridTaartbekleding = new WebGrid(source: selectedDataTaartbekleding, defaultSort: "ID", rowsPerPage:16);
+    var gridTaartdecoratie = new WebGrid(source: selectedDataTaartdecoratie, defaultSort: "ID", rowsPerPage:16);
+    var gridTaarttype = new WebGrid(source: selectedDataTaarttype, defaultSort: "ID", rowsPerPage:16);
+    var gridTaartvulling = new WebGrid(source: selectedDataTaartvulling, defaultSort: "ID", rowsPerPage:16);
 }
 
 <!DOCTYPE html>
 
 <html lang="en">
     <head>
+        <link href="css/reset.css" rel="stylesheet" type="text/css" />
+        <link href="css/fondanti.css" rel="stylesheet" type="text/css" />
         <meta charset="utf-8" />
         <title></title>
     </head>
     <body>
-        
+        <div id="griddiv">
+            @gridTaartbekleding.GetHtml(
+            tableStyle: "grid",
+            headerStyle: "head",
+            alternatingRowStyle: "alt",
+            columns: gridTaartbekleding.Columns(
+            gridTaartbekleding.Column("ID"),
+            gridTaartbekleding.Column("Bekleding")
+            )
+            
+       )
+        </div>
+        <div id="griddiv">
+            @gridTaartdecoratie.GetHtml(
+            tableStyle: "grid",
+            headerStyle: "head",
+            alternatingRowStyle: "alt",
+            columns: gridTaartdecoratie.Columns(
+            gridTaartdecoratie.Column("ID"),
+            gridTaartdecoratie.Column("Decoratie niveau")
+            )
+            
+       )
+        </div>
+        <div id="griddiv">
+            @gridTaarttype.GetHtml(
+            tableStyle: "grid",
+            headerStyle: "head",
+            alternatingRowStyle: "alt",
+            columns: gridTaarttype.Columns(
+            gridTaarttype.Column("ID"),
+            gridTaarttype.Column("Type")
+            )
+            
+       )
+        </div>
+        <div id="griddiv">
+            @gridTaartvulling.GetHtml(
+            tableStyle: "grid",
+            headerStyle: "head",
+            alternatingRowStyle: "alt",
+            columns: gridTaartvulling.Columns(
+            gridTaartvulling.Column("ID"),
+            gridTaartvulling.Column("Vulling")
+            )
+            
+       )
+        </div>
+        <h3>^ Als ID wordt gesorteerd, wordt momenteel iedere tabel gesorteerd op ID. Dit komt doordat iedere column in die tabellen "ID" heet; deze moeten dus nog gerenamed worden.</h3>
     </body>
 </html>
