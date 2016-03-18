@@ -1,13 +1,21 @@
 ﻿@{
   var db = Database.Open("FONDANTI2");
-  var Account = "SELECT AccountName FROM Account";
-  var Password = "SELECT Password FROM Account";
+  var SelectAccount = "SELECT ID FROM Account WHERE AccountName='@0' AND Password='@1'";
+  var SelectData = "SELECT * FROM Account WHERE AccountName='test' AND Password='test1'";
+  var SelectedData = db.Query(SelectData);
+  var grid = new WebGrid(source: SelectedData );
 
-    if(!IsPost){
-        if(Account == Request.Form["Username"] && Password == Request.Form["Password"]){
-            Response.Redirect("/Admin.cshtml");
-            }
-    }
+    if(IsPost){
+        string usrname = Request.Form["Username"];
+        string pwd = Request.Form["Password"];
+        var Account = db.QueryValue(SelectAccount, usrname, pwd);
+
+        if(Account != null){
+            //Response.Redirect("/Admin.cshtml");
+            Validation.AddFormError("" + Account + " | " + usrname + " | " + pwd + " | " + SelectAccount);
+           }
+
+}
 }
 
 <!DOCTYPE html>
@@ -31,5 +39,18 @@
             <input type="text" name="Password" value=""/></p>
         
         <p><input type="submit" name="buttonSubmit" value="Login"/></p></fieldset></form>
+
+        <div>
+        @grid.GetHtml(
+            tableStyle: "grid",
+            headerStyle: "head",
+            alternatingRowStyle: "alt",
+            columns: grid.Columns(
+                grid.Column(format: @<a href="~/EditKado?id=@item.ID">Wijzig</a>),
+                grid.Column("AccountName"),
+                grid.Column("Password")
+                )
+            )
+        </div>
     </body>
 </html>
