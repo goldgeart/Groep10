@@ -26,19 +26,18 @@
         <meta charset="utf-8" />
         <title></title>
     </head>
-    <body>
-        <div id="top-header"></div>
-        <h2>Login pagina</h2>
+    <body id="LoginPaginaBody">
+        <div id="top-header"><h2 id="Hoofdtekst">Login pagina</h2></div>
+        </br>
         @Html.ValidationSummary()</div>
         <div class="content-box" id="wedding-cake-content-box">
             <div class="content-center">
             <form method="post">
         <fieldset>
-        <legend>Admin portaal login</legend>
         
         <h3><label for="Username">Gebruikersnaam:</label>
             <input type="text" name="Username" value=""/></h3>
-        
+        </br>
         <div id="Password"><h3><label for="Password">Wachtwoord:</label>
             <input type="text" name="Password" value=""/></h3></div>
         
@@ -46,5 +45,5 @@
                 </div>
 
             </div>
-    </body>
+     </body>
 </html>
