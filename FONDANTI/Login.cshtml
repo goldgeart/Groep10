@@ -1,32 +1,23 @@
 ﻿@{
   var db = Database.Open("FONDANTI2");
   var SelectAccount = "SELECT ID FROM Account WHERE AccountName='@0' AND Password='@1'";
-  var SelectData = "SELECT * FROM Account WHERE AccountName='test' AND Password='test1'";
+  var SelectData = "SELECT * FROM Account WHERE AccountName='Test' AND Password='Test1'";
   var SelectedData = db.Query(SelectData);
   var grid = new WebGrid(source: SelectedData );
 
     if(IsPost){
-<<<<<<< HEAD
-        if(Account == Request.Form["Username"] && Password == Request.Form["Password"]){
-            Responds.Redirect("/Admin.cshtml");
-        }
-        else{
-            Validation.AddFormError("Username or Password is invalid");
-        }
-=======
+
         string usrname = Request.Form["Username"];
         string pwd = Request.Form["Password"];
         var Account = db.QueryValue(SelectAccount, usrname, pwd);
 
         if(Account != null){
-            //Response.Redirect("/Admin.cshtml");
+            Response.Redirect("/Admin.cshtml");
             Validation.AddFormError("" + Account + " | " + usrname + " | " + pwd + " | " + SelectAccount);
            }
->>>>>>> a387189b659c9433119c22ff72ac20d8b00e09a0
 
 }
-}
-
+    }
 <!DOCTYPE html>
 
 <html lang="en">
