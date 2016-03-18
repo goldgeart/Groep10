@@ -1,65 +1,50 @@
 ﻿@{
   var db = Database.Open("FONDANTI2");
-  var SelectAccount = "SELECT ID FROM Account WHERE AccountName='@0' AND Password='@1'";
-  var SelectData = "SELECT * FROM Account WHERE AccountName='test' AND Password='test1'";
-  var SelectedData = db.Query(SelectData);
-  var grid = new WebGrid(source: SelectedData );
 
     if(IsPost){
-<<<<<<< HEAD
-        if(Account == Request.Form["Username"] && Password == Request.Form["Password"]){
-            Responds.Redirect("/Admin.cshtml");
-        }
-        else{
-            Validation.AddFormError("Username or Password is invalid");
-        }
-=======
+
         string usrname = Request.Form["Username"];
         string pwd = Request.Form["Password"];
-        var Account = db.QueryValue(SelectAccount, usrname, pwd);
+        var userpass = db.QueryValue("SELECT Password FROM Account WHERE AccountName=@0", usrname);
 
-        if(Account != null){
-            //Response.Redirect("/Admin.cshtml");
-            Validation.AddFormError("" + Account + " | " + usrname + " | " + pwd + " | " + SelectAccount);
+        if(userpass == null){
+             Validation.AddFormError("Gebruikersnaam of wachtwoord is onjuist.");
            }
->>>>>>> a387189b659c9433119c22ff72ac20d8b00e09a0
-
-}
+           else if(userpass == pwd){
+               Response.Redirect("Admin.cshtml");
+           }
+    }
 }
 
 <!DOCTYPE html>
 
 <html lang="en">
     <head>
+        <link href="css/reset.css" rel="stylesheet" type="text/css" />
+        <link href="css/fondanti.css" rel="stylesheet" type="text/css" />
+
         <meta charset="utf-8" />
         <title></title>
     </head>
     <body>
-        <h1>Login pagina</h1>
-        @Html.ValidationSummary()
-        <form method="post">
+        <div id="top-header"></div>
+        <h2>Login pagina</h2>
+        @Html.ValidationSummary()</div>
+        <div class="content-box" id="wedding-cake-content-box">
+            <div class="content-center">
+            <form method="post">
         <fieldset>
         <legend>Admin portaal login</legend>
         
-        <p><label for="Username">Username:</label>
-            <input type="text" name="Username" value=""/></p>
+        <h3><label for="Username">Gebruikersnaam:</label>
+            <input type="text" name="Username" value=""/></h3>
         
-        <p><label for="Password">Password:</label>
-            <input type="text" name="Password" value=""/></p>
+        <div id="Password"><h3><label for="Password">Wachtwoord:</label>
+            <input type="text" name="Password" value=""/></h3></div>
         
         <p><input type="submit" name="buttonSubmit" value="Login"/></p></fieldset></form>
+                </div>
 
-        <div>
-        @grid.GetHtml(
-            tableStyle: "grid",
-            headerStyle: "head",
-            alternatingRowStyle: "alt",
-            columns: grid.Columns(
-                grid.Column(format: @<a href="~/EditKado?id=@item.ID">Wijzig</a>),
-                grid.Column("AccountName"),
-                grid.Column("Password")
-                )
-            )
-        </div>
+            </div>
     </body>
 </html>
