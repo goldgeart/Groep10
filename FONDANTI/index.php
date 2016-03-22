@@ -15,21 +15,25 @@
 
 </head>
 <body>
-
     <div id="shop">
-        <div class="col-md-3">
-        <div id="pic1">1</div>
+        <div class="col-md-6">
+        <div id="pic1"><img src="img/trouwtaart.jpg" alt="trouwtaart"/></div>
         </div>
-        <div class="col-md-3">
-        <div id="pic2">2</div>
+        <div class="col-md-6">
+        <div id="pic2"><img src="img/kindertaart.jpg" alt="verjaardags taarten voor kinderen"/></div>
         </div>
-        <div class="col-md-3">
-        <div id="pic3">3</div>
+        <div class="col-md-6">
+        <div id="pic3"><img src="img/taart3.jpg" alt="verjaardags taarten voor volwassenen"/></div>
         </div>
-        <div class="col-md-3">
-        <div id="pic4">4</div>
+        <div class="col-md-6">
+        <div id="pic4"><img src="img/taart2.jpg" alt="taarten voor andere gelegenheden"/></div>
         </div>
     </div>
+    <div id="trouwtaart"></div>
+    <div id="kindertaart"></div>
+    <div id="volwassentaart"></div>
+    <div id="overigetaarten"></div>
+
     <div id="top-header">
         <div class="content-center">
             <div id="header-logo"><img src="img/fondanti-logo.png" alt="Fondanti logo"/></div>
@@ -42,7 +46,7 @@
         </div>
     </div>
 
-    <a href="#" onclick="document.getElementById('shop').style.display = 'none'; return false;">
+    
     <div class="content-box" id="fondanti-content-box">
         <div class="main-background-image" id="fondanti-main-background"><img src="img/bg_verjaardag_taart_bep.jpg" alt="verjaardagstaart"/></div>
         <div class="content-center">
@@ -122,7 +126,7 @@
             </div>
         </div>
     </div>
-    </a>
+
     <!-- Javascript -->
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="js/fondanti.js"></script>
