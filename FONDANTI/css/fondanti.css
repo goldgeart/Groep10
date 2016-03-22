@@ -58,6 +58,18 @@ p{
     margin-top: 5.5%;
 }
 
+griddivAdminTop {
+    margin-top: 5%;
+}
+
+#griddivAdmin {
+    margin-top: 3%;
+}
+
+#DivTekst {
+    color: #C0C0C0;
+}
+
 #Hoofdtekst {
     font-family: helveticaneue-ultralightRg, Arial, Helvetica, clean, sans-serif;
     font-size: 60px;
