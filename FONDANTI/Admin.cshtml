@@ -42,8 +42,9 @@
             headerStyle: "head",
             alternatingRowStyle: "alt",
             columns: gridTaartbekleding.Columns(
-            gridTaartbekleding.Column("ID"),
-            gridTaartbekleding.Column("Bekleding")
+            //gridTaartbekleding.Column(format: @<a href="~/EditPrijs?id=@item.IDBekleding">Edit</a>),
+            gridTaartbekleding.Column("Bekleding"),
+            gridTaartbekleding.Column("Prijs")
             )
             
        )
@@ -54,8 +55,9 @@
             headerStyle: "head",
             alternatingRowStyle: "alt",
             columns: gridTaartdecoratie.Columns(
-            gridTaartdecoratie.Column("ID"),
-            gridTaartdecoratie.Column("Decoratie niveau")
+            //gridTaartdecoratie.Column(format: @<a href="~/EditPrijs?id=@item.IDDecoratie">Edit</a>),
+            gridTaartdecoratie.Column("Decoratie niveau"),
+            gridTaartdecoratie.Column("Prijs")
             )
             
        )
@@ -66,8 +68,9 @@
             headerStyle: "head",
             alternatingRowStyle: "alt",
             columns: gridTaarttype.Columns(
-            gridTaarttype.Column("ID"),
-            gridTaarttype.Column("Type")
+            //gridTaarttype.Column(format: @<a href="~/EditPrijs?id=@item.IDType">Edit</a>),
+            gridTaarttype.Column("Type"),
+            gridTaarttype.Column("Prijs")
             )
             
        )
@@ -78,8 +81,9 @@
             headerStyle: "head",
             alternatingRowStyle: "alt",
             columns: gridTaartvulling.Columns(
-            gridTaartvulling.Column("ID"),
-            gridTaartvulling.Column("Vulling")
+            //gridTaartdecoratie.Column(format: @<a href="~/EditPrijs?id=@item.IDVulling">Edit</a>),
+            gridTaartvulling.Column("Vulling"),
+            gridTaartvulling.Column("Prijs")
             )
             
        )

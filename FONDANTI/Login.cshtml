@@ -10,10 +10,12 @@
         if(userpass == null){
              Validation.AddFormError("Gebruikersnaam of wachtwoord is onjuist.");
            }
+           else if (userpass != pwd){
+               Validation.AddFormError("Wachtwoord is onjuist.");
+           }
            else if(userpass == pwd){
                Session["Login"] = usrname;
                Response.Redirect("Admin.cshtml");
-               
            }
     }
 }
