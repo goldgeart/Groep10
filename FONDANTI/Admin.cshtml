@@ -1,8 +1,8 @@
 ﻿@{
     
-    if(Session["Login"] == null){
-        Response.Redirect("Login.cshtml");
-    }
+    //if(Session["Login"] == null){
+      //  Response.Redirect("Login.cshtml");
+    //}
 
     var db = Database.Open("FONDANTI2") ;
 
@@ -16,10 +16,10 @@
     var selectedDataTaarttype = db.Query(selectCommandTaarttype);
     var selectedDataTaartvulling = db.Query(selectCommandTaartvulling);
 
-    var gridTaartbekleding = new WebGrid(source: selectedDataTaartbekleding, defaultSort: "ID", rowsPerPage:16);
-    var gridTaartdecoratie = new WebGrid(source: selectedDataTaartdecoratie, defaultSort: "ID", rowsPerPage:16);
-    var gridTaarttype = new WebGrid(source: selectedDataTaarttype, defaultSort: "ID", rowsPerPage:16);
-    var gridTaartvulling = new WebGrid(source: selectedDataTaartvulling, defaultSort: "ID", rowsPerPage:16);
+    var gridTaartbekleding = new WebGrid(source: selectedDataTaartbekleding, defaultSort: "IDBekleding", rowsPerPage:16);
+    var gridTaartdecoratie = new WebGrid(source: selectedDataTaartdecoratie, defaultSort: "IDDecoratie", rowsPerPage:16);
+    var gridTaarttype = new WebGrid(source: selectedDataTaarttype, defaultSort: "IDType", rowsPerPage:16);
+    var gridTaartvulling = new WebGrid(source: selectedDataTaartvulling, defaultSort: "IDVulling", rowsPerPage:16);
 }
 
 <!DOCTYPE html>
@@ -55,8 +55,8 @@
             headerStyle: "head",
             alternatingRowStyle: "alt",
             columns: gridTaartdecoratie.Columns(
-            //gridTaartdecoratie.Column(format: @<a href="~/EditPrijs?id=@item.IDDecoratie">Edit</a>),
-            gridTaartdecoratie.Column("Decoratie niveau"),
+            gridTaartdecoratie.Column(format: @<a href="~/EditPrijs?id=@item.IDDecoratie">Edit</a>),
+            gridTaartdecoratie.Column("Decoratie"),
             gridTaartdecoratie.Column("Prijs")
             )
             
@@ -68,7 +68,7 @@
             headerStyle: "head",
             alternatingRowStyle: "alt",
             columns: gridTaarttype.Columns(
-            //gridTaarttype.Column(format: @<a href="~/EditPrijs?id=@item.IDType">Edit</a>),
+            gridTaarttype.Column(format: @<a href="~/EditPrijs?id=@item.IDType">Edit</a>),
             gridTaarttype.Column("Type"),
             gridTaarttype.Column("Prijs")
             )
@@ -81,7 +81,7 @@
             headerStyle: "head",
             alternatingRowStyle: "alt",
             columns: gridTaartvulling.Columns(
-            //gridTaartdecoratie.Column(format: @<a href="~/EditPrijs?id=@item.IDVulling">Edit</a>),
+            gridTaartdecoratie.Column(format: @<a href="~/EditPrijs?id=@item.IDVulling">Edit</a>),
             gridTaartvulling.Column("Vulling"),
             gridTaartvulling.Column("Prijs")
             )
