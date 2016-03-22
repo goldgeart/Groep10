@@ -2,7 +2,27 @@
     //if(Session["Login"] == null){
       //  Response.Redirect("Login.cshtml");
     //}
-    
+    var Productnaam = "";
+    var genre = "";
+    var year = "";
+    var ProductId = "";
+    var TableId = "";
+
+    if(!IsPost){
+        if(!Request.QueryString["ID"].IsEmpty()){
+            ProductId = Request.QueryString["ID"];
+            TableId = Request.QueryString["ID"];
+            var db = Database.Open("FONDANTI2");
+            var dbCommand = "SELECT * FROM Movies WHERE ID = @0";
+            var row = db.QuerySingle(dbCommand, movieId);
+            title = row.Title;
+            genre = row.Genre;
+            year = row.Year;
+        }
+        else{
+            Validation.AddFormError("No movie was selected.");
+        }
+    }
 }
 
 <!DOCTYPE html>
