@@ -9,18 +9,40 @@
 
     <title>Fondanti - Fabulous cakes</title>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link href="css/reset.css" rel="stylesheet" type="text/css" />
     <link href="css/fondanti.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
+
+    <div id="shop">
+        <div class="col-md-3">
+        <div id="pic1">1</div>
+        </div>
+        <div class="col-md-3">
+        <div id="pic2">2</div>
+        </div>
+        <div class="col-md-3">
+        <div id="pic3">3</div>
+        </div>
+        <div class="col-md-3">
+        <div id="pic4">4</div>
+        </div>
+    </div>
     <div id="top-header">
         <div class="content-center">
             <div id="header-logo"><img src="img/fondanti-logo.png" alt="Fondanti logo"/></div>
-            <div id="header-phone-number"><p><a href="~/Taartengen"><img src="img/Taartwinkelkar2.png" alt="Ga naar de taarten generator"></a><a href="http://www.facebook.com/fondanti"><img src="img/facebook_logo.png" alt="Fondanti on Facebook"/></a><a href="tel:+31616064485"><img src="img/white_phone.png" alt="white phone"/><span>0616064485</span></a></p></div>
+            <div id="header-phone-number"><p>
+            <a href="#webportal" onclick="document.getElementById('shop').style.display = 'block'; return false;"><img src="img/Taartwinkelkar2.png" alt="Ga naar de taarten generator"></a>
+            <a href="http://www.facebook.com/fondanti"><img src="img/facebook_logo.png" alt="Fondanti on Facebook"/></a>
+            <a href="tel:+31616064485"><img src="img/white_phone.png" alt="white phone"/><span>0616064485</span></a>
+            </p>
+            </div>
         </div>
     </div>
 
+    <a href="#" onclick="document.getElementById('shop').style.display = 'none'; return false;">
     <div class="content-box" id="fondanti-content-box">
         <div class="main-background-image" id="fondanti-main-background"><img src="img/bg_verjaardag_taart_bep.jpg" alt="verjaardagstaart"/></div>
         <div class="content-center">
@@ -100,7 +122,7 @@
             </div>
         </div>
     </div>
-
+    </a>
     <!-- Javascript -->
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="js/fondanti.js"></script>

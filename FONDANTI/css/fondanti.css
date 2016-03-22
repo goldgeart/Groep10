@@ -178,6 +178,7 @@ Main Section
     height: 800px;
 }
 
+
 /*
 Wedding cakes Section
 */
@@ -333,6 +334,10 @@ Contact us
     #header-phone-number span{
         display: none;
     }
+    
+    #webportal{
+    
+}
 
     /*
    Fondanti top box
@@ -431,4 +436,31 @@ span.dataDisplay {font-weight:bold;}
 
     #griddiv{
     margin: 10px;
+}
+
+#shop{
+    height: 400px;
+    margin-top: 90px;
+    background-color: #C0C0C0;
+    display: none;
+}
+
+#pic1{
+   margin-left: 10%;
+   background-color: Yellow;
+}
+
+#pic2{
+   margin-left: 10%;
+      background-color: Yellow;
+}
+
+#pic3{
+   margin-left: 10%;
+      background-color: Yellow;
+}
+
+#pic4{
+   margin-left: 10%;  
+      background-color: Yellow;
 }
