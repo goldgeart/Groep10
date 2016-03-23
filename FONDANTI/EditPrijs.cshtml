@@ -1,6 +1,5 @@
 ﻿@{
     
-    Layout = "~/_Layout.cshtml";
     var Naam= "";
     var Prijs = "";
     var CatID = "";
@@ -18,7 +17,7 @@
                 else{
                     Validation.AddFormError("Er is geen Naam gevonden met dat ID.");
                 }
->>>>>>> e7168dd8a5c02ba5f4d0f5d2bb9a8662d6a69a60
+
         }
         else{
             Validation.AddFormError("Er is geen Naam geselecteerd.");
@@ -43,39 +42,7 @@
 }
 
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html lang="en">
-    <head>
-        <link href="css/reset.css" rel="stylesheet" type="text/css" />
-        <link href="css/fondanti.css" rel="stylesheet" type="text/css" />
-        <meta charset="utf-8" />
-        <title></title>
-    </head>
-    <body id="AdminPaginaBody">
 
-      <div id="top-header"><h2 id="Hoofdtekst">Aanpassen</h2></div>
-
-        <div><p id="DivTekst">.</p></div>
-        <div id="griddivAdminTop">
-            @gridCatogorie.GetHtml(
-            tableStyle: "grid",
-            headerStyle: "head",
-            alternatingRowStyle: "alt",
-           
-            columns: gridCatogorie.Columns(
-            gridCatogorie.Column(format: @<a href="~/EditPrijs?id1=@item.CatID&">Edit</a>),
-            gridCatogorie.Column("Naam"))
-           
-            
-            )
-      
-            
-        </div>
-</body>
-
-
-</html>
-=======
 <html>
   <head>
    <meta charset="utf-8" />
@@ -113,4 +80,4 @@
 
 </body>
 </html>
->>>>>>> e7168dd8a5c02ba5f4d0f5d2bb9a8662d6a69a60
+
