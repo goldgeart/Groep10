@@ -4,6 +4,7 @@
        Response.Redirect("Login.cshtml");
     }
 
+   
     var db = Database.Open("FONDANTI2") ;
 
     var selectCommandTaartbekleding = "SELECT * FROM Taartbekleding";
@@ -42,7 +43,7 @@
             headerStyle: "head",
             alternatingRowStyle: "alt",
             columns: gridTaartbekleding.Columns(
-           
+            gridTaartbekleding.Column(format: @<a href="~/EditPrijs?id1=@item.Bekleding&category=Bekleding">Edit</a>),
             gridTaartbekleding.Column("Bekleding"),
             gridTaartbekleding.Column("Prijs")
             )
