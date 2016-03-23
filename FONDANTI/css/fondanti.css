@@ -495,35 +495,38 @@ span.dataDisplay {
 
 #trouwtaart {
     width: 100%;
-    margin-top: 90px;
+    padding-top: 30px;
     background-color: #C0C0C0;
 }
 
 #overigetaarten {
     width: 100%;
-    margin-top: 90px;
+    padding-top: 30px;
     background-color: #C0C0C0;
 }
 
 #kindertaart {
     width: 100%;
-    margin-top: 90px;
+  padding-top: 30px;
     background-color: #C0C0C0;
 }
 
 #volwassentaart {
     width: 100%;
-    margin-top: 90px;
+    padding-top: 30px;
     background-color: #C0C0C0;
 }
 #stap1{
-    margin-top: 10px;
+    margin-top: 30px;
+    
 }
 #stap2{
-    margin-top: 10px;
+    margin-top: 30px;
+    
 }
 #check{
-    margin-top: 10px;
+    margin-top: 30px;
+   
 }
 #next1{
     margin-left: 85%;
@@ -531,5 +534,9 @@ span.dataDisplay {
     margin-top: 5%;
 }
 #progress{
-    margin-top: 5%;
+    width: 90%;
+    margin-left: 5%;
+}
+#contain{
+    margin-left: 10%;
 }
