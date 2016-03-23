@@ -1,9 +1,6 @@
 ﻿@{
-
-    if(Session["Login"] == null){
-        Response.Redirect("Login.cshtml");
-   }
     
+<<<<<<< HEAD
   {     
 
    
@@ -12,26 +9,57 @@
     var CatID = "";
     var ProductId = "";
     var TableId = "";
+=======
+    Layout = "~/_Layout.cshtml";
+    var Naam= "";
+    var Prijs = "";
+    var CatID = "";
+>>>>>>> e7168dd8a5c02ba5f4d0f5d2bb9a8662d6a69a60
 
     if(!IsPost){
-        if(!Request.QueryString["ID"].IsEmpty()){
-            ProductId = Request.QueryString["IDType"];
-            TableId = Request.QueryString["Type"];
+        if(!Request.QueryString["ID"].IsEmpty() && Request.QueryString["ID"].IsInt()){
+            CatID = Request.QueryString["ID"];
             var db = Database.Open("FONDANTI2");
+<<<<<<< HEAD
             var dbCommand = "SELECT * FROM Type WHERE ID = @0";
             var row = db.QuerySingle(dbCommand, CatID);
             
+=======
+            var dbCommand = "SELECT * FROM Kados WHERE ID = @0";
+            var row = db.QuerySingle(dbCommand, CatID);
+                if(row != null) {
+                    Naam = row.Naam;
+                    Prijs = row.Prijs;
+                }
+                else{
+                    Validation.AddFormError("Er is geen Naam gevonden met dat ID.");
+                }
+>>>>>>> e7168dd8a5c02ba5f4d0f5d2bb9a8662d6a69a60
         }
         else{
-            Validation.AddFormError("No movie was selected.");
+            Validation.AddFormError("Er is geen Naam geselecteerd.");
         }
     }
+        if(IsPost){
+        Validation.RequireField("Kado", "Je moet een kado invullen.");
+        Validation.RequireField("Nummer", "Je moet een nummer invullen.");
+        Validation.RequireField("ID", "Er is geen ID geselecteerd.");
 
+        Naam = Request.Form["Kado"];
+        Prijs = Request.Form["Nummer"];
+        CatID = Request.Form["ID"];
+
+        if(Validation.IsValid()){
+            var db = Database.Open("FONDANTI2   ");
+            var updateCommand = "UPDATE Ingredienten SET Naam=@0, Prijs=@1 WHERE ID=@2";
+            db.Execute(updateCommand,Naam, Prijs, CatID);
+            Response.Redirect("~/Admin.cshtml");
+       }
+    }
 }
-  }
-
 
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
     <head>
         <link href="css/reset.css" rel="stylesheet" type="text/css" />
@@ -63,3 +91,42 @@
 
 
 </html>
+=======
+<html>
+  <head>
+   <meta charset="utf-8" />
+   <title>Wijzig een kado.</title>
+    <style>
+      .validation-summary-errors{
+        border:2px dashed red;
+        color:red;
+        font-weight:bold;
+        margin:12px;
+      }
+    </style>
+  </head>
+</head>
+<body>
+  <h1>Wijzig een kado.</h1>
+    @Html.ValidationSummary()
+  <form method="post">
+    <fieldset>
+      <legend>Kado informatie</legend>
+
+      <p><label for="Kado">Kado:</label>
+         <input type="text" name="Kado" value="@Naam" /></p>
+
+      <p><label for="Nummer">Nummer:</label>
+         <input type="text" name="Nummer" value="@Prijs" /></p>
+
+      <input type="hidden" name="ProductId" value="@CatID" />
+
+      <p><input type="submit" name="buttonSubmit" value="Veranderingen opslaan." /></p>
+    </fieldset>
+  </form>
+
+        <p><a href="~/MainBruids">Ga terug naar hoofdpagina.</a></p>
+
+</body>
+</html>
+>>>>>>> e7168dd8a5c02ba5f4d0f5d2bb9a8662d6a69a60
