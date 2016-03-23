@@ -9,8 +9,8 @@
         if(!Request.QueryString["ID"].IsEmpty() && Request.QueryString["ID"].IsInt()){
             CatID = Request.QueryString["ID"];
             var db = Database.Open("FONDANTI2");
-            var dbCommand = "SELECT * FROM Ingredienten WHERE ID = @1";
-            var row = db.QuerySingle(dbCommand, CatID);
+            var dbCommand = "SELECT * FROM Ingredienten WHERE @0";
+            var row = db.Query(dbCommand, CatID);
                 if(row != null) {
                     Naam = row.Naam;
                     Prijs = row.Prijs;
