@@ -9,7 +9,7 @@
    
 
 
-    var IDType = "";
+    var CatID = "";
     var ProductId = "";
     var TableId = "";
 
@@ -19,7 +19,7 @@
             TableId = Request.QueryString["Type"];
             var db = Database.Open("FONDANTI2");
             var dbCommand = "SELECT * FROM Type WHERE ID = @0";
-            var row = db.QuerySingle(dbCommand, IDType);
+            var row = db.QuerySingle(dbCommand, CatID);
             
         }
         else{
@@ -32,17 +32,34 @@
 
 
 <!DOCTYPE html>
-
 <html lang="en">
     <head>
         <link href="css/reset.css" rel="stylesheet" type="text/css" />
         <link href="css/fondanti.css" rel="stylesheet" type="text/css" />
         <meta charset="utf-8" />
-        <meta charset="utf-8" />
-
-        <title>Prijs Aanpassen</title>
+        <title></title>
     </head>
-     
-              </div>
-    </body>
+    <body id="AdminPaginaBody">
+
+      <div id="top-header"><h2 id="Hoofdtekst">Aanpassen</h2></div>
+
+        <div><p id="DivTekst">.</p></div>
+        <div id="griddivAdminTop">
+            @gridCatogorie.GetHtml(
+            tableStyle: "grid",
+            headerStyle: "head",
+            alternatingRowStyle: "alt",
+           
+            columns: gridCatogorie.Columns(
+            gridCatogorie.Column(format: @<a href="~/EditPrijs?id1=@item.CatID&">Edit</a>),
+            gridCatogorie.Column("Naam"))
+           
+            
+            )
+      
+            
+        </div>
+</body>
+
+
 </html>
