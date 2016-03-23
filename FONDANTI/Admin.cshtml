@@ -35,9 +35,11 @@
             tableStyle: "grid",
             headerStyle: "head",
             alternatingRowStyle: "alt",
+           
             columns: gridCatogorie.Columns(
+            gridCatogorie.Column(format: @<a href="~/EditPrijs?id1=@item.CatID&">Edit</a>),
             gridCatogorie.Column("Naam"))
-        
+           
             
             )
       
