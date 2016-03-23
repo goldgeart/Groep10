@@ -6,31 +6,29 @@ body {
     color: #333;
     background-color: #C0C0C0;
 }
+
 @font-face {
     font-family: 'helveticaneue-ultralightRg';
     src: url('fonts/helveticaneue-ultralight-webfont.eot');
-    src: url('fonts/helveticaneue-ultralight-webfont.eot?#iefix') format('embedded-opentype'),
-    url('fonts/helveticaneue-ultralight-webfont.woff') format('woff'),
-    url('fonts/helveticaneue-ultralight-webfont.ttf') format('truetype'),
-    url('fonts/helveticaneue-ultralight-webfont.svg#helveticaneue-ultralightRg') format('svg');
+    src: url('fonts/helveticaneue-ultralight-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/helveticaneue-ultralight-webfont.woff') format('woff'), url('fonts/helveticaneue-ultralight-webfont.ttf') format('truetype'), url('fonts/helveticaneue-ultralight-webfont.svg#helveticaneue-ultralightRg') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
-h2{
+h2 {
     font-family: helveticaneue-ultralightRg, Arial, Helvetica, clean, sans-serif;
     font-size: 87px;
     color: white;
     font-weight: 100;
     line-height: 90%;
 }
-h3{
+
+h3 {
     font-family: helveticaneue-ultralightRg, Arial, Helvetica, clean, sans-serif;
     font-size: 30px;
 }
 
-p{
+p {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 24px;
     color: white;
@@ -39,14 +37,15 @@ p{
     font-weight: 200;
 }
 
-.content-center{
+.content-center {
     width: 1048px;
     position: absolute;
     left: 50%;
     top: 0px;
     margin-left: -524px;
 }
-#Password{
+
+#Password {
     margin-left: 43px;
 }
 
@@ -96,7 +95,7 @@ griddivAdminTop {
     }
 }
 
-#top-header{
+#top-header {
     width: 100%;
     height: 75px;
     background-color: #ad0b5d;
@@ -106,12 +105,12 @@ griddivAdminTop {
     z-index: 666;
 }
 
-#header-logo{
+#header-logo {
     position: absolute;
-    top:10px;
+    top: 10px;
 }
 
-#header-phone-number{
+#header-phone-number {
     position: absolute;
     right: 0;
 }
@@ -122,19 +121,19 @@ griddivAdminTop {
     top: 1px;
 }
 
-#header-phone-number p{
+#header-phone-number p {
     font-family: helveticaneue-ultralightRg, Arial, Helvetica, clean, sans-serif;
     color: white;
     font-size: 50px;
     margin-top: 16px;
 }
 
-#header-phone-number a{
+#header-phone-number a {
     text-decoration: none;
     color: white;
 }
 
-#circle-image{
+#circle-image {
     position: absolute;
     top: 928px;
     left: 50%;
@@ -148,22 +147,22 @@ griddivAdminTop {
     position: relative;
 }
 
-.text-box{
+.text-box {
     width: 530px;
     position: absolute;
     text-shadow: 2px 2px #000000;
 }
 
-.text-box a{
+.text-box a {
     color: #ad0b5d;
     text-decoration: none;
     font-weight: bold;
 }
 
-.main-background-image{
+.main-background-image {
 }
 
-.main-background-image img{
+.main-background-image img {
     width: 100%;
     display: block;
 }
@@ -176,7 +175,7 @@ griddivAdminTop {
         margin-left: -600px;
     }
 
-    .main-background-image img{
+    .main-background-image img {
         display: none;
     }
 }
@@ -186,17 +185,17 @@ griddivAdminTop {
 Main Section
 */
 
-#fondanti-content-box{
+#fondanti-content-box {
     height: 800px;
 }
 
-#fondanti-text{
-    top:170px;
-    left:0;
+#fondanti-text {
+    top: 170px;
+    left: 0;
     width: 40%;
 }
 
-#fondanti-main-background{
+#fondanti-main-background {
     background-image: url('../img/bg_verjaardag_taart_bep.jpg');
     height: 800px;
 }
@@ -206,17 +205,17 @@ Main Section
 Wedding cakes Section
 */
 
-#wedding-cake-content-box{
+#wedding-cake-content-box {
     height: 800px;
 }
 
-#wedding-cake-text{
-    top:170px;
-    left:0;
+#wedding-cake-text {
+    top: 170px;
+    left: 0;
     width: 40%;
 }
 
-#wedding-cake-main-background{
+#wedding-cake-main-background {
     background-image: url('../img/bg_wedding_cake.jpg');
     height: 800px;
 }
@@ -225,17 +224,17 @@ Wedding cakes Section
 Kids cakes Section
 */
 
-#kids-cake-content-box{
+#kids-cake-content-box {
     height: 900px;
 }
 
-#kids-cake-text{
-    top:170px;
-    right:0;
+#kids-cake-text {
+    top: 170px;
+    right: 0;
     width: 490px;
 }
 
-#kids-cake-main-background{
+#kids-cake-main-background {
     background-image: url('../img/bg_kindertaart.jpg');
     height: 900px;
 }
@@ -244,17 +243,17 @@ Kids cakes Section
 Workshops Section
 */
 
-#workshops-content-box{
+#workshops-content-box {
     height: 810px;
 }
 
-#workshops-text{
-    top:180px;
-    left:0;
+#workshops-text {
+    top: 180px;
+    left: 0;
     width: 600px;
 }
 
-#workshops-main-background{
+#workshops-main-background {
     background-image: url('../img/bg_workshops.jpg');
     height: 810px;
 }
@@ -263,16 +262,16 @@ Workshops Section
 Cupcakes Section
 */
 
-#cupcakes-content-box{
+#cupcakes-content-box {
     height: 700px;
 }
 
-#cupcakes-text{
-    top:80px;
-    right:0;
+#cupcakes-text {
+    top: 80px;
+    right: 0;
 }
 
-#cupcakes-main-background{
+#cupcakes-main-background {
     background-image: url('../img/bg_cupcakes.jpg');
     height: 700px;
 }
@@ -281,17 +280,17 @@ Cupcakes Section
 Feesttaarten Section
 */
 
-#feesttaart-content-box{
+#feesttaart-content-box {
     height: 700px;
 }
 
-#feesttaart-text{
-    top:80px;
-    left:0;
+#feesttaart-text {
+    top: 80px;
+    left: 0;
     width: 40%;
 }
 
-#feesttaart-main-background{
+#feesttaart-main-background {
     background-image: url('../img/bg_feesttaart.jpg');
     height: 700px;
 }
@@ -301,11 +300,11 @@ Feesttaarten Section
 Contact us
 */
 
-#contactus-content-box{
+#contactus-content-box {
     height: 528px;
 }
 
-#contact-us-left{
+#contact-us-left {
     position: absolute;
     top: 0;
     width: 50%;
@@ -313,13 +312,12 @@ Contact us
     display: block;
 }
 
-#contactus-text{
-    top:80px;
-
+#contactus-text {
+    top: 80px;
     width: 400px;
 }
 
-#contactus-text a{
+#contactus-text a {
     text-decoration: none;
     color: white;
     font-weight: 200;
@@ -331,7 +329,7 @@ Contact us
     top: 2px;
 }
 
-#contactus-main-background{
+#contactus-main-background {
     background-image: url('../img/bg_contact.jpg');
     height: 528px;
 }
@@ -350,24 +348,23 @@ Contact us
 
 
 
-    #header-logo{
-        left:4%;
+    #header-logo {
+        left: 4%;
     }
 
-    #header-phone-number span{
+    #header-phone-number span {
         display: none;
     }
-    
-    #webportal{
-    
-}
+
+    #webportal {
+    }
 
     /*
    Fondanti top box
     */
 
 
-    #fondanti-text{
+    #fondanti-text {
         right: auto;
         left: 4%;
         width: 87%;
@@ -378,7 +375,7 @@ Contact us
     */
 
 
-    #wedding-cake-text{
+    #wedding-cake-text {
         right: auto;
         left: 4%;
         width: 87%;
@@ -389,7 +386,7 @@ Contact us
     */
 
 
-    #kids-cake-text{
+    #kids-cake-text {
         right: auto;
         left: 4%;
         width: 87%;
@@ -401,14 +398,14 @@ Contact us
     */
 
 
-    #workshops-text{
+    #workshops-text {
         right: auto;
         left: 4%;
         width: 87%;
         top: 145px;
     }
 
-    #workshops-text p{
+    #workshops-text p {
         font-size: 22px;
     }
 
@@ -417,7 +414,7 @@ Contact us
     */
 
 
-    #cupcakes-text{
+    #cupcakes-text {
         right: auto;
         left: 4%;
         width: 87%;
@@ -428,7 +425,7 @@ Contact us
     */
 
 
-    #feesttaart-text{
+    #feesttaart-text {
         right: auto;
         left: 4%;
         width: 87%;
@@ -439,81 +436,83 @@ Contact us
     Contact us
     */
 
-    #contactus-text{
+    #contactus-text {
         right: auto;
         left: 4%;
         width: 90%;
     }
 }
 
-    /*
+/*
     Grid layout    
     */
 
-.head { background-color: #E8E8E8; font-weight: bold; color: #FFF; }
-.grid th, .grid td { border: 1px solid #C0C0C0; padding: 5px; }
-.alt { background-color: #E8E8E8; color: #000; }
-.selected {background-color:Yellow;}
-span.caption {width:100px;}
-span.dataDisplay {font-weight:bold;}
+.head {
+    background-color: #E8E8E8;
+    font-weight: bold;
+    color: #FFF;
+}
 
-    #griddiv{
+.grid th, .grid td {
+    border: 1px solid #C0C0C0;
+    padding: 5px;
+}
+
+.alt {
+    background-color: #E8E8E8;
+    color: #000;
+}
+
+.selected {
+    background-color: Yellow;
+}
+
+span.caption {
+    width: 100px;
+}
+
+span.dataDisplay {
+    font-weight: bold;
+}
+
+#griddiv {
     margin: 10px;
 }
 
-#shop{
-    
+#shop img {
     width: 100%;
-  
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#shop {
+    width: 100%;
     margin-top: 90px;
     background-color: #C0C0C0;
     display: none;
 }
 
-#pic1{
-   margin-left: 10%;
-   margin-top: 5px;
-   margin-bottom: 5px;
-   width: 400px;
-   background-color: Yellow;
-}
-#pic1 img{
- width: 100%;
-   height: 100%;
+
+#trouwtaart {
+    width: 100%;
+    margin-top: 90px;
+    background-color: #C0C0C0;
 }
 
-#pic2{
-   margin-left: 10%;
-      width: 400px;
-         margin-top: 5px;
-   margin-bottom: 5px;
-      background-color: Yellow;
-}
-#pic2 img{
- width: 100%;
-   height: 100%;
+#overigetaarten {
+    width: 100%;
+    margin-top: 90px;
+    background-color: #C0C0C0;
 }
 
-#pic3{
-   margin-left: 10%;
-      width: 400px;
-         margin-top: 5px;
-   margin-bottom: 5px;
-      background-color: Yellow;
-}
-#pic3 img{
-  width: 100%;
-   height: 100%;
+#kindertaart {
+    width: 100%;
+    margin-top: 90px;
+    background-color: #C0C0C0;
 }
 
-#pic4{
-   margin-left: 10%;
-      margin-top: 5px;
-   margin-bottom: 5px; 
-      width: 400px; 
-      background-color: Yellow;
-}
-#pic4 img{
-   width: 100%;
-   height: 100%;
+#volwassentaart {
+    width: 100%;
+    margin-top: 90px;
+    background-color: #C0C0C0;
 }
