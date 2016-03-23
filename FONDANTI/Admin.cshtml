@@ -7,20 +7,13 @@
    
     var db = Database.Open("FONDANTI2") ;
 
-    var selectCommandTaartbekleding = "SELECT * FROM Taartbekleding";
-    var selectCommandTaartdecoratie = "SELECT * FROM Taartdecoratie";
-    var selectCommandTaarttype = "SELECT * FROM Taarttype";
-    var selectCommandTaartvulling = "SELECT * FROM Taartvulling";
+    var selectCommandCatogorie = "SELECT * FROM Catogorie";
+   
 
-    var selectedDataTaartbekleding = db.Query(selectCommandTaartbekleding);
-    var selectedDataTaartdecoratie = db.Query(selectCommandTaartdecoratie);
-    var selectedDataTaarttype = db.Query(selectCommandTaarttype);
-    var selectedDataTaartvulling = db.Query(selectCommandTaartvulling);
-
-    var gridTaartbekleding = new WebGrid(source: selectedDataTaartbekleding, defaultSort: "IDBekleding", rowsPerPage:16);
-    var gridTaartdecoratie = new WebGrid(source: selectedDataTaartdecoratie, defaultSort: "IDDecoratie", rowsPerPage:16);
-    var gridTaarttype = new WebGrid(source: selectedDataTaarttype, defaultSort: "IDType", rowsPerPage:16);
-    var gridTaartvulling = new WebGrid(source: selectedDataTaartvulling, defaultSort: "IDVulling", rowsPerPage:16);
+    var selectedDataCatogorie = db.Query(selectCommandCatogorie);
+   
+    var gridCatogorie = new WebGrid(source: selectedDataCatogorie, defaultSort: "Naam", rowsPerPage:16);
+   
 }
 
 <!DOCTYPE html>
@@ -38,56 +31,16 @@
 
         <div><p id="DivTekst">.</p></div>
         <div id="griddivAdminTop">
-            @gridTaartbekleding.GetHtml(
+            @gridCatogorie.GetHtml(
             tableStyle: "grid",
             headerStyle: "head",
             alternatingRowStyle: "alt",
-            columns: gridTaartbekleding.Columns(
-            gridTaartbekleding.Column(format: @<a href="~/EditPrijs?id1=@item.Bekleding&category=Bekleding">Edit</a>),
-            gridTaartbekleding.Column("Bekleding"),
-            gridTaartbekleding.Column("Prijs")
-            )
+            columns: gridCatogorie.Columns(
+            gridCatogorie.Column("Naam"))
+        
             
-       )
-        </div>
-        <div id="griddivAdmin">
-            @gridTaartdecoratie.GetHtml(
-            tableStyle: "grid",
-            headerStyle: "head",
-            alternatingRowStyle: "alt",
-            columns: gridTaartdecoratie.Columns(
-            gridTaartdecoratie.Column(format: @<a href="~/EditPrijs?id1=@item.Decoratie">Edit</a>),
-            gridTaartdecoratie.Column("Decoratie"),
-            gridTaartdecoratie.Column("Prijs")
             )
-            
-       )
-        </div>
-        <div id="griddivAdmin">
-            @gridTaarttype.GetHtml(
-            tableStyle: "grid",
-            headerStyle: "head",
-            alternatingRowStyle: "alt",
-            columns: gridTaarttype.Columns(
-            gridTaarttype.Column(format: @<a href="~/EditPrijs?id1=@item.Type">Edit</a>),
-            gridTaarttype.Column("Type"),
-            gridTaarttype.Column("Prijs")
-            )
-            
-       )
-        </div>
-        <div id="griddivAdmin">
-            @gridTaartvulling.GetHtml(
-            tableStyle: "grid",
-            headerStyle: "head",
-            alternatingRowStyle: "alt",
-            columns: gridTaartvulling.Columns(
-            gridTaartdecoratie.Column(format: @<a href="~/EditPrijs?id1=@item.Vulling">Edit</a>),
-            gridTaartvulling.Column("Vulling"),
-            gridTaartvulling.Column("Prijs")
-            )
-            
-       )
+      
             
         </div>
 </body>
