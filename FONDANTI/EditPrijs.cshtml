@@ -1,14 +1,15 @@
 ﻿@{
-    
+
     var Naam= "";
     var Prijs = "";
     var CatID = "";
 
     if(!IsPost){
+
         if(!Request.QueryString["ID"].IsEmpty() && Request.QueryString["ID"].IsInt()){
             CatID = Request.QueryString["ID"];
             var db = Database.Open("FONDANTI2");
-            var dbCommand = "SELECT * FROM Ingredienten WHERE ID = @0";
+            var dbCommand = "SELECT * FROM Ingredienten WHERE ID = @1";
             var row = db.QuerySingle(dbCommand, CatID);
                 if(row != null) {
                     Naam = row.Naam;
@@ -24,16 +25,17 @@
         }
     }
         if(IsPost){
+
         Validation.RequireField("Kado", "Je moet een kado invullen.");
         Validation.RequireField("Nummer", "Je moet een nummer invullen.");
         Validation.RequireField("ID", "Er is geen ID geselecteerd.");
 
         Naam = Request.Form["Kado"];
         Prijs = Request.Form["Nummer"];
-        CatID = Request.Form["ID"];
+        CatID = Request.Form["ProductID"];
 
         if(Validation.IsValid()){
-            var db = Database.Open("FONDANTI2   ");
+            var db = Database.Open("FONDANTI2");
             var updateCommand = "UPDATE Ingredienten SET Naam=@0, Prijs=@1 WHERE ID=@2";
             db.Execute(updateCommand,Naam, Prijs, CatID);
             Response.Redirect("~/Admin.cshtml");
@@ -68,15 +70,15 @@
          <input type="text" name="Kado" value="@Naam" /></p>
 
       <p><label for="Nummer">Nummer:</label>
-         <input type="text" name="Nummer" value="@Prijs" /></p>
+         <input type="number" name="Nummer" value="@Prijs" /></p>
 
-      <input type="hidden" name="ProductId" value="@CatID" />
+      <input type="text" name="ProductId" value="@CatID" />
 
       <p><input type="submit" name="buttonSubmit" value="Veranderingen opslaan." /></p>
     </fieldset>
   </form>
 
-        <p><a href="~/MainBruids">Ga terug naar hoofdpagina.</a></p>
+        <p><a href="~/Admin">Ga terug naar hoofdpagina.</a></p>
 
 </body>
 </html>
