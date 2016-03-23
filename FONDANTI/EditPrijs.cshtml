@@ -1,45 +1,48 @@
 ﻿@{
-<<<<<<< HEAD
+
     if(Session["Login"] == null){
         Response.Redirect("Login.cshtml");
    }
     
-=======
-    //if(Session["Login"] == null){
-      //  Response.Redirect("Login.cshtml");
-    //}
-    var Productnaam = "";
-    var genre = "";
-    var year = "";
+  {     
+
+   
+
+
+    var IDType = "";
     var ProductId = "";
     var TableId = "";
 
     if(!IsPost){
         if(!Request.QueryString["ID"].IsEmpty()){
-            ProductId = Request.QueryString["ID"];
-            TableId = Request.QueryString["ID"];
+            ProductId = Request.QueryString["IDType"];
+            TableId = Request.QueryString["Type"];
             var db = Database.Open("FONDANTI2");
-            var dbCommand = "SELECT * FROM Movies WHERE ID = @0";
-            var row = db.QuerySingle(dbCommand, movieId);
-            title = row.Title;
-            genre = row.Genre;
-            year = row.Year;
+            var dbCommand = "SELECT * FROM Type WHERE ID = @0";
+            var row = db.QuerySingle(dbCommand, IDType);
+            
         }
         else{
             Validation.AddFormError("No movie was selected.");
         }
     }
->>>>>>> aad0c87134400f4670c99dffa4972d26ec8420cf
+
 }
+  }
+
 
 <!DOCTYPE html>
 
 <html lang="en">
     <head>
+        <link href="css/reset.css" rel="stylesheet" type="text/css" />
+        <link href="css/fondanti.css" rel="stylesheet" type="text/css" />
         <meta charset="utf-8" />
-        <title></title>
+        <meta charset="utf-8" />
+
+        <title>Prijs Aanpassen</title>
     </head>
-    <body>
-        
+     
+              </div>
     </body>
 </html>

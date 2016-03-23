@@ -1,8 +1,8 @@
 ﻿@{
     
-    //if(Session["Login"] == null){
-      //  Response.Redirect("Login.cshtml");
-    //}
+    if(Session["Login"] == null){
+       Response.Redirect("Login.cshtml");
+    }
 
     var db = Database.Open("FONDANTI2") ;
 
@@ -42,7 +42,7 @@
             headerStyle: "head",
             alternatingRowStyle: "alt",
             columns: gridTaartbekleding.Columns(
-            gridTaartbekleding.Column(format: @<a href="~/EditPrijs?id=@item.IDBekleding&">Edit</a>),
+           
             gridTaartbekleding.Column("Bekleding"),
             gridTaartbekleding.Column("Prijs")
             )
@@ -68,7 +68,7 @@
             headerStyle: "head",
             alternatingRowStyle: "alt",
             columns: gridTaarttype.Columns(
-            gridTaarttype.Column(format: @<a href="~/EditPrijs?id=@item.IDType">Edit</a>),
+            gridTaarttype.Column(format: @<a href="~/EditPrijs?id1=@item.Type">Edit</a>),
             gridTaarttype.Column("Type"),
             gridTaarttype.Column("Prijs")
             )
@@ -81,7 +81,7 @@
             headerStyle: "head",
             alternatingRowStyle: "alt",
             columns: gridTaartvulling.Columns(
-            gridTaartdecoratie.Column(format: @<a href="~/EditPrijs?id=@item.IDVulling">Edit</a>),
+            gridTaartdecoratie.Column(format: @<a href="~/EditPrijs?id1=@item.Vulling">Edit</a>),
             gridTaartvulling.Column("Vulling"),
             gridTaartvulling.Column("Prijs")
             )
