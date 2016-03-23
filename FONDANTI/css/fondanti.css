@@ -50,7 +50,23 @@ p {
 }
 
 #LoginPaginaBody {
-    margin-top: 7%;
+    margin-top: 75px;
+}
+
+#AdminPaginaBody {
+    margin-top: 75px;
+}
+
+griddivAdminTop {
+    margin-top: 5%;
+}
+
+#griddivAdmin {
+    margin-top: 3%;
+}
+
+#DivTekst {
+    color: #C0C0C0;
 }
 
 #Hoofdtekst {
@@ -465,7 +481,6 @@ span.dataDisplay {
 
 #shop img {
     width: 100%;
-    margin-left: 5%;
     margin-top: 5px;
     margin-bottom: 5px;
 }
