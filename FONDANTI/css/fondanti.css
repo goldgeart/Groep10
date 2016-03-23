@@ -516,3 +516,20 @@ span.dataDisplay {
     margin-top: 90px;
     background-color: #C0C0C0;
 }
+#stap1{
+    margin-top: 10px;
+}
+#stap2{
+    margin-top: 10px;
+}
+#check{
+    margin-top: 10px;
+}
+#next1{
+    margin-left: 85%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+#progress{
+    margin-top: 5%;
+}

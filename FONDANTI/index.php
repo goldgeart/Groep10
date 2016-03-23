@@ -14,31 +14,55 @@
         <link href="css/fondanti.css" rel="stylesheet" type="text/css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script>
-            $(document).ready(function(){
-            $("#taart1").click(function(){
-                $("#shop").load("trouwtaart.html");
-              });
+            $(document).ready(function () {
+                $("#taart1").click(function () {
+                    $("#shop").load("trouwtaart.cshtml", function () {
+                         $("#next1").click(function () {
+                        if ($("#stap1").val() && $("#stap2").val()) {
+                            $("#shop").load("stap2-1.cshtml");
+                        } else (alert("vul alles in"))
+                    });
+                    });             
+                });
             });
         </script>
         <script>
-            $(document).ready(function(){
-            $("#taart2").click(function(){
-                $("#shop").load("kinderverjaardag.html");
-              });
+            $(document).ready(function () {
+                $("#taart2").click(function () {
+                    $("#shop").load("kinderverjaardag.cshtml", function () {
+                         $("#next1").click(function () {
+                        if ($("#stap1").val() && $("#stap2").val()) {
+                            $("#shop").load("stap2-2.cshtml");
+                        } else (alert("vul alles in"))
+                    });
+                    });             
+                });
             });
         </script>
         <script>
-            $(document).ready(function(){
-            $("#taart3").click(function(){
-                $("#shop").load("volwassentaart.html");
-              });
+            $(document).ready(function () {
+                $("#taart3").click(function () {
+                    $("#shop").load("volwassentaart.cshtml", function () {
+                         $("#next1").click(function () {
+                        if ($("#stap1").val() && $("#stap2").val()) {
+                            $("#shop").load("stap2-3.cshtml");
+                        } else (alert("vul alles in"))
+                    });
+                    });             
+                });
             });
         </script>
         <script>
-            $(document).ready(function(){
-            $("#taart4").click(function(){
-                $("#shop").load("overige.html");
-              });
+            $(document).ready(function () {
+                $("#taart4").click(function () {
+                    $("#shop").load("overige.cshtml", function () {
+                         $("#next1").click(function () {
+                        if ($("#stap1").val() && $("#stap2").val()) {
+                            $("#shop").load("stap2-4.cshtml");
+                        } else (alert("vul alles in"))
+                    });
+                    });             
+                });
             });
         </script>
 
