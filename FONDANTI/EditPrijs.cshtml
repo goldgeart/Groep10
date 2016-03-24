@@ -1,22 +1,26 @@
 ﻿@{
+      var db = Database.Open("FONDANTI2");
+      var CatID = Request.QueryString["ID"];
+      var SelectCommandIngredienten = "SELECT * FROM Ingredienten WHERE CatID=@0";
+      var SelectedDataIngredienten = db.Query(SelectCommandIngredienten, CatID);
+      var gridIngredienten = new WebGrid(source: SelectedDataIngredienten, defaultSort: "Naam", rowsPerPage:16);
+      //var Naam = Request.Form["Naam"];
+      //var Prijs = Request.Form["Prijs"];
+      Validation.AddFormError(CatID);
 
-    
-      var Naam = Request.Form["Naam"];
-      var Prijs = Request.Form["Prijs"];
-      var CatID = Request.Form["CatID"];
 
 
 
-    if(!IsPost){
+    /*if(!IsPost){
 
          List<string> Naam1 = new List<string>();
-         var Prijs1 = new List<string>();
+         List<decimal> Prijs1 = new List<decimal>();
          var CatID1 = "";
 
         if(!Request.QueryString["ID"].IsEmpty() && Request.QueryString["ID"].IsInt()){
             CatID1 = Request.QueryString["ID"];
-            var db = Database.Open("FONDANTI2");
-            var dbCommand = "SELECT * FROM Ingredienten WHERE @0";
+
+            var dbCommand = "SELECT * FROM Ingredienten WHERE CatID=@0";
             var row = db.Query(dbCommand, CatID1);
             foreach(var r in row){
                 if(r != null) {
@@ -44,7 +48,7 @@
             db.Execute(updateCommand, Naam, Prijs, CatID);
             Response.Redirect("~/Admin.cshtml");
        }
-    }
+    }*/
 }
 
 <!DOCTYPE html>
@@ -61,30 +65,26 @@
         margin:12px;
       }
     </style>
-  </head>
 </head>
-<body>
-  <h1>Wijzig een kado.</h1>
-    @Html.ValidationSummary()
-  <form method="post">
-    <fieldset>
-      <legend>Kado informatie</legend>
+    <body id="AdminPaginaBody">
 
-      <p><label for="Naam">Naam:</label>
-         <input type="text" name="Naam" value="@Naam" /></p>
+      <div id="top-header"><h2 id="Hoofdtekst">Wijzig Product</h2></div>
 
-      <p><label for="Prijs">Prijs:</label>
-         <input type="number" name="Prijs" value="" />
-      Huidige prijs is @Prijs</p>
-
-      <input type="text" name="CatID" value="@CatID" />
-
-      <p><input type="submit" name="buttonSubmit" value="Veranderingen opslaan." /></p>
-    </fieldset>
-  </form>
-
-        <p><a href="~/Admin">Ga terug naar hoofdpagina.</a></p>
-
+        <div><p id="DivTekst"></p></div>
+        <div id="griddivAdminTop">
+            @gridIngredienten.GetHtml(
+            tableStyle: "grid",
+            headerStyle: "head",
+            alternatingRowStyle: "alt",
+           
+            columns: gridIngredienten.Columns(
+            gridIngredienten.Column("Naam"),
+            gridIngredienten.Column("Prijs"))
+           
+            
+            )
+            </div>
+      
 </body>
 </html>
 
