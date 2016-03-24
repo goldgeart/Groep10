@@ -17,12 +17,17 @@
             $(document).ready(function () {
                 $("#taart1").click(function () {
                     $("#shop").load("trouwtaart.cshtml", function () {
-                         $("#next1").click(function () {
-                        if ($("#stap1").val() && $("#stap2").val()) {
-                            $("#shop").load("stap2-1.cshtml");
-                        } else (alert("vul alles in"))
+                        $("#next1").click(function () {
+                            if ($("#stap1").val() && $("#stap2").val()) {
+                                $("#shop").load("stap2-1.cshtml", function () {
+                                    $("#next2").click(function () {
+                                        $("#shop").load("Login.cshtml");
+
+                                    });
+                                });
+                            }else (alert("vul alles in"))
+                        });
                     });
-                    });             
                 });
             });
         </script>
@@ -68,19 +73,23 @@
 
     </head>
     <body>
-        
+
         <div id="shop">
-            <div class="col-sm-3 col-md-3">
-                <img src="img/trouwtaart.jpg" alt="trouwtaart" id="taart1" />
+            <div class="col-sm-12 col-md-3">
+                <img src="img/taarttrouwen.svg" alt="trouwtaart" id="taart1" />
+          
             </div>
-            <div class="col-sm-3 col-md-3">
-                <img src="img/kindertaart.jpg" alt="verjaardags taarten voor kinderen" id="taart2" />
+            <div class="col-sm-12 col-md-3 ">
+                <img src="img/taartverjaardagkind.svg" alt="verjaardags taarten voor kinderen" id="taart2" />
+                
             </div>
-            <div class="col-sm-3 col-md-3">
-                <img src="img/taart3.jpg" alt="verjaardags taarten voor volwassenen" id="taart3" />
+            <div class="col-sm-12 col-md-3 ">
+                <img src="img/taartverjaardagvolwassene.svg" alt="verjaardags taarten voor volwassenen" id="taart3" />
+                
             </div>
-            <div class="col-sm-3 col-md-3">
-                <img src="img/taart2.jpg" alt="taarten voor andere gelegenheden" id="taart4" />
+            <div class="col-sm-12 col-md-3 ">
+                <img src="img/taartanders.svg" alt="taarten voor andere gelegenheden" id="taart4" />
+              
             </div>
         </div>
 

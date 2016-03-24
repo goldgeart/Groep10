@@ -1,4 +1,5 @@
 ﻿@{
+<<<<<<< HEAD
       var db = Database.Open("FONDANTI2");
       var Prijs = Request.Form["Prijs"];
       var IngredientenID = Request.Form["IngredientenID"];
@@ -9,12 +10,55 @@
             var updateCommand = "UPDATE Ingredienten SET Prijs=@0 WHERE IngredientenID=@1";
             db.Execute(updateCommand, Prijs, IngredientenID);
             Validation.AddFormError("De prijs is nu gewijzigt.");
+=======
+
+    var Naam= "";
+    var Prijs = "";
+    var CatID = "";
+
+    if(!IsPost){
+
+        if(!Request.QueryString["ID"].IsEmpty() && Request.QueryString["ID"].IsInt()){
+            CatID = Request.QueryString["ID"];
+            var db = Database.Open("FONDANTI2");
+            var dbCommand = "SELECT * FROM Ingredienten WHERE @0";
+            var row = db.Query(dbCommand, CatID);
+                if(row != null) {
+                    Naam = row.Naam;
+                    Prijs = row.Prijs;
+                }
+                else{
+                    Validation.AddFormError("Er is geen Naam gevonden met dat ID.");
+                }
+
+        }
+        else{
+            Validation.AddFormError("Er is geen Naam geselecteerd.");
+>>>>>>> eb5f12d3db9ffa2075368acc40c0ff3df8722be7
         }
 
+<<<<<<< HEAD
       var CatID = Request.QueryString["ID"];
       var SelectCommandIngredienten = "SELECT * FROM Ingredienten WHERE CatID=@0";
       var SelectedDataIngredienten = db.Query(SelectCommandIngredienten, CatID);
       var gridIngredienten = new WebGrid(source: SelectedDataIngredienten, defaultSort: "Naam", rowsPerPage:16);
+=======
+        Validation.RequireField("Kado", "Je moet een kado invullen.");
+        Validation.RequireField("Nummer", "Je moet een nummer invullen.");
+        Validation.RequireField("ID", "Er is geen ID geselecteerd.");
+
+        Naam = Request.Form["Kado"];
+        Prijs = Request.Form["Nummer"];
+        CatID = Request.Form["ProductID"];
+
+        if(Validation.IsValid()){
+            var db = Database.Open("FONDANTI2");
+            var updateCommand = "UPDATE Ingredienten SET Naam=@0, Prijs=@1 WHERE ID=@2";
+            db.Execute(updateCommand,Naam, Prijs, CatID);
+            Response.Redirect("~/Admin.cshtml");
+       }
+    }
+>>>>>>> eb5f12d3db9ffa2075368acc40c0ff3df8722be7
 }
 
 <!DOCTYPE html>
@@ -31,7 +75,9 @@
         margin:12px;
       }
     </style>
+  </head>
 </head>
+<<<<<<< HEAD
     <body id="AdminPaginaBody">
         @Html.ValidationSummary()
       <div id="top-header"><h2 id="Hoofdtekst">Wijzig Product</h2></div>
@@ -53,6 +99,29 @@
             )
             
             </div>
+=======
+<body>
+  <h1>Wijzig een kado.</h1>
+    @Html.ValidationSummary()
+  <form method="post">
+    <fieldset>
+      <legend>Kado informatie</legend>
+
+      <p><label for="Kado">Kado:</label>
+         <input type="text" name="Kado" value="@Naam" /></p>
+
+      <p><label for="Nummer">Nummer:</label>
+         <input type="number" name="Nummer" value="@Prijs" /></p>
+
+      <input type="text" name="ProductId" value="@CatID" />
+
+      <p><input type="submit" name="buttonSubmit" value="Veranderingen opslaan." /></p>
+    </fieldset>
+  </form>
+
+        <p><a href="~/Admin">Ga terug naar hoofdpagina.</a></p>
+
+>>>>>>> eb5f12d3db9ffa2075368acc40c0ff3df8722be7
 </body>
 </html>
 

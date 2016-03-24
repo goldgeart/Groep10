@@ -91,6 +91,12 @@ griddivAdminTop {
 #BodyLogin {
     margin-left: 5%;
 }
+#mainpage {
+    float: right;
+    color: #ad0b5d;
+    font-size: 10px;
+    margin-top: 10%;
+}
 
 @media screen and (max-width: 1200px) {
     .content-center {
@@ -486,7 +492,9 @@ span.dataDisplay {
 
 #shop img {
     width: 100%;
+    height: 100%;
     margin-top: 5px;
+    border-radius: 8px;
     margin-bottom: 5px;
 }
 
@@ -499,6 +507,11 @@ span.dataDisplay {
 
 
 #trouwtaart {
+    width: 100%;
+    padding-top: 30px;
+    background-color: #C0C0C0;
+}
+#trouwtaart-2 {
     width: 100%;
     padding-top: 30px;
     background-color: #C0C0C0;
@@ -540,8 +553,17 @@ span.dataDisplay {
 }
 #progress{
     width: 90%;
+    border-radius: 3px;
     margin-left: 5%;
+}
+#progressbar{
+    border-radius: 3px;
 }
 #contain{
     margin-left: 10%;
+}
+#next2{
+    margin-left: 85%;
+    margin-bottom: 5%;
+    margin-top: 5%;
 }
