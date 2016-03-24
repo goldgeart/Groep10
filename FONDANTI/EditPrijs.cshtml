@@ -1,24 +1,32 @@
 ﻿@{
 
-    var Naam= "";
-    var Prijs = "";
-    var CatID = "";
+    
+      var Naam = Request.Form["Naam"];
+      var Prijs = Request.Form["Prijs"];
+      var CatID = Request.Form["CatID"];
+
+
 
     if(!IsPost){
 
+         List<string> Naam1 = new List<string>();
+         var Prijs1 = new List<string>();
+         var CatID1 = "";
+
         if(!Request.QueryString["ID"].IsEmpty() && Request.QueryString["ID"].IsInt()){
-            CatID = Request.QueryString["ID"];
+            CatID1 = Request.QueryString["ID"];
             var db = Database.Open("FONDANTI2");
             var dbCommand = "SELECT * FROM Ingredienten WHERE @0";
-            var row = db.Query(dbCommand, CatID);
-                if(row != null) {
-                    Naam = row.Naam;
-                    Prijs = row.Prijs;
+            var row = db.Query(dbCommand, CatID1);
+            foreach(var r in row){
+                if(r != null) {
+                    Naam1.Add(r.Naam);
+                    Prijs1.Add(r.Prijs);
                 }
                 else{
                     Validation.AddFormError("Er is geen Naam gevonden met dat ID.");
                 }
-
+           }
         }
         else{
             Validation.AddFormError("Er is geen Naam geselecteerd.");
@@ -26,18 +34,14 @@
     }
         if(IsPost){
 
-        Validation.RequireField("Kado", "Je moet een kado invullen.");
-        Validation.RequireField("Nummer", "Je moet een nummer invullen.");
+        Validation.RequireField("Naam", "Je moet een naam invullen.");
+        Validation.RequireField("Prijs", "Je moet een prijs invullen.");
         Validation.RequireField("ID", "Er is geen ID geselecteerd.");
-
-        Naam = Request.Form["Kado"];
-        Prijs = Request.Form["Nummer"];
-        CatID = Request.Form["ProductID"];
 
         if(Validation.IsValid()){
             var db = Database.Open("FONDANTI2");
             var updateCommand = "UPDATE Ingredienten SET Naam=@0, Prijs=@1 WHERE ID=@2";
-            db.Execute(updateCommand,Naam, Prijs, CatID);
+            db.Execute(updateCommand, Naam, Prijs, CatID);
             Response.Redirect("~/Admin.cshtml");
        }
     }
@@ -66,13 +70,14 @@
     <fieldset>
       <legend>Kado informatie</legend>
 
-      <p><label for="Kado">Kado:</label>
-         <input type="text" name="Kado" value="@Naam" /></p>
+      <p><label for="Naam">Naam:</label>
+         <input type="text" name="Naam" value="@Naam" /></p>
 
-      <p><label for="Nummer">Nummer:</label>
-         <input type="number" name="Nummer" value="@Prijs" /></p>
+      <p><label for="Prijs">Prijs:</label>
+         <input type="number" name="Prijs" value="" />
+      Huidige prijs is @Prijs</p>
 
-      <input type="text" name="ProductId" value="@CatID" />
+      <input type="text" name="CatID" value="@CatID" />
 
       <p><input type="submit" name="buttonSubmit" value="Veranderingen opslaan." /></p>
     </fieldset>
