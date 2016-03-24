@@ -1,4 +1,8 @@
 /* CSS Document */
+html {
+    background-color: #C0C0C0;
+}
+
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
@@ -55,6 +59,7 @@ p {
 
 #AdminPaginaBody {
     margin-top: 75px;
+    background-color: #C0C0C0;
 }
 
 griddivAdminTop {
