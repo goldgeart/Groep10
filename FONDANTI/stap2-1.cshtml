@@ -23,8 +23,8 @@
         <div class="col-sm-6 col-md-6">
             <div class="col-sm-12 col-md-12">
                 <select style="font-size: 20px" name="drop2" required id="stap4">
+                    <option value="" disabled selected style="display: none;">Bekleding</option>
                     @foreach(var row in db.Query(selectQueryStringBekleding)){
-                        <option value="" disabled selected style="display: none;">Bekleding</option>
                         <option value="1 laag">@row.Naam</option>
                     }
 
@@ -32,24 +32,24 @@
             </div>
             <div class="col-sm-12 col-md-12">
                 <select style="font-size: 20px" name="drop2" required id="stap4-2">
+                    <option value="" disabled selected style="display: none;">Type</option>
                     @foreach(var row in db.Query(selectQueryStringType)){
-                        <option value="" disabled selected style="display: none;">Type</option>
                         <option value="1 laag">@row.Naam</option>
                     }
                 </select>
             </div>
             <div class="col-sm-12 col-md-12">
                 <select style="font-size: 20px" name="drop2" required id="stap4-3">
-                   @foreach(var row in db.Query(selectQueryStringVulling)){
-                        <option value="" disabled selected style="display: none;">Vulling</option>
+                    <option value="" disabled selected style="display: none;">Vulling</option>
+                    @foreach(var row in db.Query(selectQueryStringVulling)){
                         <option value="1 laag">@row.Naam</option>
                     }
                 </select>
             </div>
             <div class="col-sm-12 col-md-12">
                 <select style="font-size: 20px" name="drop2" required id="stap4-4">
+                    <option value="" disabled selected style="display: none;">Decoratie</option>
                     @foreach(var row in db.Query(selectQueryStringDecoratie)){
-                        <option value="" disabled selected style="display: none;">Decoratie</option>
                         <option value="1 laag">@row.Naam</option>
                     }
                 </select>
