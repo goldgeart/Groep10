@@ -1,4 +1,21 @@
+@{
+    var aantalmensen= "";
+     var personen= "";
+    var ID = 1;
+    var lagen = "";
+    var drop2= "";
+    var prijsindicatie = "";
+    if(IsPost && Request.Form["Action"] == "Trouwtaart"){
+        prijsindicatie = Request.Form["aantalmensen"];
+        personen = Request.Form["aantalmensen"];
+        lagen = Request.Form["drop2"];
+        var db = Database.Open("FONDANTI2");
+        var updateCommand = "Update Factuur SET prijsindicatie=@0, personen=@0, lagen=@1 WHERE ID=1";
+        db.Execute(updateCommand, prijsindicatie,personen,lagen, ID);
+        Response.Redirect("stap2-1.cshtml");
 
+    }
+}
 <div id="kindertaart">
      <div id="progress" style="height: 20px; background-color: #fff;">
         <div id="progressbar" style="background-color: #8A0B4B; width: 25%; height: 100%;"></div>
@@ -6,15 +23,15 @@
     <div id="contain">
         <div class="col-sm-4 col-md-4">
             aantal mensen
-            <input style="font-size: 15px" type="number" min="10" max="60" value="aantal mensen" id="stap1">
+            <input style="font-size: 15px" type="number" min="10" max="60" value="@aantal mensen" id="stap1">
         </div>
         <div class="col-sm-4 col-md-4">
-            <select style="font-size: 20px" name="drop2" required id="stap2">
+            <select style="font-size: 20px" name="@drop2" required id="stap2">
                 <option value="" disabled selected style="display: none;">aantal lagen</option>
-                <option value="1 laag">1 Laag</option>
-                <option value="2 lagen">2 Lagen</option>
-                <option value="3 lagen">3 Lagen</option>
-                <option value="4 lagen">4 Lagen</option>
+                <option value="1">1 Laag</option>
+                <option value="2">2 Lagen</option>
+                <option value="3">3 Lagen</option>
+                <option value="4">4 Lagen</option>
             </select>
         </div>
         <div class="col-sm-4 col-md-4">

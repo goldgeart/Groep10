@@ -1,20 +1,22 @@
 @{
     var aantalmensen= "";
+    var personen= "";
+    var drop2= "";
+    var ID = 1;
+    var lagen = "";
     var prijsindicatie = "";
     if(IsPost && Request.Form["Action"] == "Trouwtaart"){
         prijsindicatie = Request.Form["aantalmensen"];
+        personen = Request.Form["aantalmensen"];
+        lagen = Request.Form["stap2"];
         var db = Database.Open("FONDANTI2");
-        var insertCommand = "INSERT INTO Factuur (prijsindicatie) values (@0)";
-        db.Execute(insertCommand, prijsindicatie);
+        var updateCommand = "Update Factuur SET prijsindicatie=@0, personen=@0, lagen=@1 WHERE ID=1";
+        db.Execute(updateCommand, prijsindicatie,personen,lagen, ID);
         Response.Redirect("stap2-1.cshtml");
-    }
-        if(IsPost && Request.Form["Action"] == "Trouwtaart2"){
-        
-        Response.Redirect("stap3-1.cshtml");
-    }
+
     }
 
-
+    }
 <!DOCTYPE html>
 <html>
     <head>

@@ -1,5 +1,4 @@
 ﻿@{
-    
 }
 
 <!DOCTYPE html>
@@ -10,58 +9,60 @@
         <meta charset="utf-8" />
         <title>Verstuur bestelling.</title>
     </head>
-<body>
+    <body>
 
-  <div id="top-header"><h2 id="Hoofdtekst">Controleer uw gegevens.</h2></div>
+        <div id="top-header"><h2 id="Hoofdtekst">Controleer uw gegevens.</h2></div>
 
-<form action="MAILTO:shev22ppal@live.nl?subject=Taart Bestelling." method="post" enctype="text/plain">
-<div id="container">
-<div class="col-sm-6 col-md-6">
-<div id="KlantGegevens" class="col-sm-6 col-md-6">
-        <h3>Uw gegevens:</h3>
-            <input type="hidden" name="Klant informatie">
+        <form action="MAILTO:shev22ppal@live.nl?subject=Taart Bestelling." method="post" enctype="text/plain">
+            <div id="container">
+                <div id="KlantGegevens">
+                    <div class="col-sm-6 col-md-6">
+
+                        <h3>Uw gegevens:</h3>
+                        <input type="hidden" name="Klant informatie">
             Volledige naam:<br>
-            <input type="text" name="Naam" value="Naam"><br>
+                        <input type="text" name="Naam" value="Naam"><br>
             Adres:<br>
-            <input type="text" name="Adres" value="Adres"><br>
+                        <input type="text" name="Adres" value="Adres"><br>
             Postcode:<br>
-            <input type="text" name="Postcode" value="Postcode"><br>
+                        <input type="text" name="Postcode" value="Postcode"><br>
             Woonplaats:<br>
-            <input type="text" name="Woonplaats" value="Woonplaats"><br>
+                        <input type="text" name="Woonplaats" value="Woonplaats"><br>
             Telefoon nummer:<br>
-            <input type="text" name="Telefoonnummer" value="06-"><br>
+                        <input type="text" name="Telefoonnummer" value="06-"><br>
             Datum:<br>
-            <input type="date" name="Datum" value=""><br><br>
-                <div id="knoppen">
-                <input type="submit" value="Ja, het klopt.">
-                <input type="reset" value="Herstellen.">
+                        <input type="date" name="Datum" value=""><br><br>
+                        <div id="knoppen">
+                            <input type="submit" value="Ja, het klopt.">
+                            <input type="reset" value="Herstellen.">
+                        </div>
+                    </div>
                 </div>
-</div>
-</div>
 
 
-<div class="col-sm-6 col-md-6">
-<div id="TaartInformatie">
-    <h3>Taart informatie:</h3>
-        <input type="hidden" name="Taart informatie">
+
+                <div id="TaartInformatie">
+                    <div class="col-sm-6 col-md-6">
+                        <h3>Taart informatie:</h3>
+                        <input type="hidden" name="Taart informatie">
         Taart type:<br>
-        <input type="text" name="Taart-Type" value="Trouwtaart"><br>
+                        <input type="text" name="Taart-Type" value="Trouwtaart"><br>
         Laag 1:<br>
-        <input type="text" name="Laag 1" value="Fondant"><br>
+                        <input type="text" name="Laag 1" value="Fondant"><br>
         Laag 2:<br>
-        <input type="text" name="Laag 2" value="Fondant"><br>
+                        <input type="text" name="Laag 2" value="Fondant"><br>
         Laag 3:<br>
-        <input type="text" name="Laag 3" value="Fondant"><br>
+                        <input type="text" name="Laag 3" value="Fondant"><br>
         Laag 4:<br>
-        <input type="text" name="Laag 4" value="Fondant"><br>
+                        <input type="text" name="Laag 4" value="Fondant"><br>
         Allergieën:<br>
-        <input type="text" name="Allergie" value="Noten allergie"><br>
+                        <input type="text" name="Allergie" value="Noten allergie"><br>
         Foto:<br>
-        <input type="file" name="Foto"><br>
-</div>
-</div>
-</div>
-</form>
+                        <input type="file" name="Foto"><br>
+                    </div>
+                </div>
+            </div>
+        </form>
 
-</body>
+    </body>
 </html>
