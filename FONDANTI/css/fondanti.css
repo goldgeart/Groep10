@@ -516,16 +516,57 @@ span.dataDisplay {
     padding-top: 30px;
     background-color: #C0C0C0;
 }
+#trouwtaart-3 {
+    width: 100%;
+    padding-top: 30px;
+    background-color: #C0C0C0;
+}
+#trouwtaart-4 {
+    width: 100%;
+    padding-top: 30px;
+    background-color: #C0C0C0;
+}
 
 #overigetaarten {
     width: 100%;
     padding-top: 30px;
     background-color: #C0C0C0;
 }
+#overigetaarten-2 {
+    width: 100%;
+    padding-top: 30px;
+    background-color: #C0C0C0;
+}
+#overigetaarten-3 {
+    width: 100%;
+    padding-top: 30px;
+    background-color: #C0C0C0;
+}
+#overigetaarten-4 {
+    width: 100%;
+    padding-top: 30px;
+    background-color: #C0C0C0;
+}
+
 
 #kindertaart {
     width: 100%;
   padding-top: 30px;
+    background-color: #C0C0C0;
+}
+#kindertaart-2 {
+    width: 100%;
+    padding-top: 30px;
+    background-color: #C0C0C0;
+}
+#kindertaart-3 {
+    width: 100%;
+    padding-top: 30px;
+    background-color: #C0C0C0;
+}
+#kindertaart-4 {
+    width: 100%;
+    padding-top: 30px;
     background-color: #C0C0C0;
 }
 
@@ -534,6 +575,22 @@ span.dataDisplay {
     padding-top: 30px;
     background-color: #C0C0C0;
 }
+#volwassentaart-2 {
+    width: 100%;
+    padding-top: 30px;
+    background-color: #C0C0C0;
+}
+#volwassentaart-3 {
+    width: 100%;
+    padding-top: 30px;
+    background-color: #C0C0C0;
+}
+#volwassentaart-4 {
+    width: 100%;
+    padding-top: 30px;
+    background-color: #C0C0C0;
+}
+
 #stap1{
     margin-top: 30px;
     
@@ -559,11 +616,52 @@ span.dataDisplay {
 #progressbar{
     border-radius: 3px;
 }
-#contain{
+.contain{
     margin-left: 10%;
 }
 #next2{
     margin-left: 85%;
     margin-bottom: 5%;
     margin-top: 5%;
+}
+#next3{
+    margin-left: 85%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+#next4{
+    margin-left: 85%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+#stap3{
+    margin: 30px;
+}
+
+#stap4 {
+    margin: 30px;
+}
+
+#stap4-2 {
+    margin: 30px;
+}
+
+#stap4-3 {
+    margin: 30px;
+}
+
+#stap4-4 {
+    margin: 30px;
+}
+#stap5{
+    margin-top: 30px;
+}
+#stap6{
+    margin: 30px;
+}
+#gegevens {
+    padding: 10px;
+}
+#naam{
+    margin: 10px;
 }

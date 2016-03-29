@@ -21,11 +21,16 @@
                             if ($("#stap1").val() && $("#stap2").val()) {
                                 $("#shop").load("stap2-1.cshtml", function () {
                                     $("#next2").click(function () {
-                                        $("#shop").load("Login.cshtml");
-
+                                        if ($("#stap3").val() && $("#stap4").val()) {
+                                            $("#shop").load("stap3-1.cshtml", function(){
+                                                $("#next3").click(function () {
+                                                    $("#shop").load("factuur-1.cshtml")
+                                                    });
+                                            });
+                                        }else(alert("vul alles in"))
                                     });
                                 });
-                            }else (alert("vul alles in"))
+                            } else (alert("vul alles in"))
                         });
                     });
                 });
@@ -35,61 +40,92 @@
             $(document).ready(function () {
                 $("#taart2").click(function () {
                     $("#shop").load("kinderverjaardag.cshtml", function () {
-                         $("#next1").click(function () {
-                        if ($("#stap1").val() && $("#stap2").val()) {
-                            $("#shop").load("stap2-2.cshtml");
-                        } else (alert("vul alles in"))
+                        $("#next1").click(function () {
+                            if ($("#stap1").val() && $("#stap2").val()) {
+                                $("#shop").load("stap2-2.cshtml", function () {
+                                    $("#next2").click(function () {
+                                        if ($("#stap3").val() && $("#stap4").val()) {
+                                            $("#shop").load("stap3-2.cshtml", function(){
+                                                $("#next3").click(function () {
+                                                    $("#shop").load("factuur-2.cshtml")
+                                                    });
+                                            });
+                                        }else(alert("vul alles in"))
+                                    });
+                                });
+                            } else (alert("vul alles in"))
+                        });
                     });
-                    });             
-                });
-            });
-        </script>
-        <script>
-            $(document).ready(function () {
-                $("#taart3").click(function () {
-                    $("#shop").load("volwassentaart.cshtml", function () {
-                         $("#next1").click(function () {
-                        if ($("#stap1").val() && $("#stap2").val()) {
-                            $("#shop").load("stap2-3.cshtml");
-                        } else (alert("vul alles in"))
-                    });
-                    });             
-                });
-            });
-        </script>
-        <script>
-            $(document).ready(function () {
-                $("#taart4").click(function () {
-                    $("#shop").load("overige.cshtml", function () {
-                         $("#next1").click(function () {
-                        if ($("#stap1").val() && $("#stap2").val()) {
-                            $("#shop").load("stap2-4.cshtml");
-                        } else (alert("vul alles in"))
-                    });
-                    });             
                 });
             });
         </script>
 
+        <script>
+            $(document).ready(function () {
+                $("#taart3").click(function () {
+                    $("#shop").load("volwassentaart.cshtml", function () {
+                        $("#next1").click(function () {
+                            if ($("#stap1").val() && $("#stap2").val()) {
+                                $("#shop").load("stap2-3.cshtml", function () {
+                                    $("#next2").click(function () {
+                                        if ($("#stap3").val() && $("#stap4").val()) {
+                                            $("#shop").load("stap3-3.cshtml", function(){
+                                                $("#next3").click(function () {
+                                                    $("#shop").load("factuur-3.cshtml")
+                                                    });
+                                            });
+                                        }else(alert("vul alles in"))
+                                    });
+                                });
+                            } else (alert("vul alles in"))
+                        });
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $("#taart4").click(function () {
+                    $("#shop").load("overige.cshtml", function () {
+                        $("#next1").click(function () {
+                            if ($("#stap1").val() && $("#stap2").val()) {
+                                $("#shop").load("stap2-4.cshtml", function () {
+                                    $("#next2").click(function () {
+                                        if ($("#stap3").val() && $("#stap4").val()) {
+                                            $("#shop").load("stap3-4.cshtml", function(){
+                                                $("#next3").click(function () {
+                                                    $("#shop").load("factuur-4.cshtml")
+                                                    });
+                                            });
+                                        }else(alert("vul alles in"))
+                                    });
+                                });
+                            } else (alert("vul alles in"))
+                        });
+                    });
+                });
+            });
+        </script>
     </head>
     <body>
 
         <div id="shop">
             <div class="col-sm-12 col-md-3">
                 <img src="img/taarttrouwen.svg" alt="trouwtaart" id="taart1" />
-          
+
             </div>
             <div class="col-sm-12 col-md-3 ">
                 <img src="img/taartverjaardagkind.svg" alt="verjaardags taarten voor kinderen" id="taart2" />
-                
+
             </div>
             <div class="col-sm-12 col-md-3 ">
                 <img src="img/taartverjaardagvolwassene.svg" alt="verjaardags taarten voor volwassenen" id="taart3" />
-                
+
             </div>
             <div class="col-sm-12 col-md-3 ">
                 <img src="img/taartanders.svg" alt="taarten voor andere gelegenheden" id="taart4" />
-              
+
             </div>
         </div>
 
