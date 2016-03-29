@@ -1,4 +1,5 @@
 ﻿@{
+    
       var db = Database.Open("FONDANTI2");
       var Prijs = Request.Form["Prijs"];
       var IngredientenID = Request.Form["IngredientenID"];
@@ -21,6 +22,8 @@
   <head>
    <meta charset="utf-8" />
    <title>Wijzig een product.</title>
+      <link href="css/reset.css" rel="stylesheet" type="text/css"/>
+      <link href="css/fondanti.css" rel="stylesheet" type="text/css"/>
     <style>
       .validation-summary-errors{
         border:2px dashed red;
@@ -42,12 +45,13 @@
             alternatingRowStyle: "alt",
            
             columns: gridIngredienten.Columns(
-            gridIngredienten.Column("IngredientenID"),
             gridIngredienten.Column("Naam"),
-            gridIngredienten.Column(format:@<form method="Post"><input type="hidden" name="IngredientenID" value="@item.IngredientenID"/><input type="text" name="Prijs" value="@item.Prijs"/> <input type="submit" value="Prijs wijzigen"/> </form>)                                                                                                                                                      
-             )           
+            gridIngredienten.Column(format:@<form method="Post"><input type="hidden" name="IngredientenID" value="@item.IngredientenID"/><input type="text" name="Prijs" value="@item.Prijs"/> <input type="submit" value="Prijs wijzigen"/> </form>),                                                                                                                                                      
+            gridIngredienten.Column(format: @<a href="~/Verwijderen">Verwijder</a>))           
             )
             </div>
+        <p><a href="~/Toevoegen?id=@CatID">Voeg product toe.</a></p>
+
 </body>
 </html>
 
