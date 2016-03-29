@@ -1,5 +1,4 @@
 @{
- //int count = Convert.ToInt32(Session["aantalmensen"]);
  var aantalmensen= "";
      var personen= "";
     var ID = 1;
@@ -12,7 +11,7 @@
         personen = Request.Form["aantalmensen"];
         lagen = Request.Form["stap2"];
         var db = Database.Open("FONDANTI2");
-        var updateCommand = "Update Factuur SET prijsindicatie=@0, personen=@0, lagen=@1 WHERE ID=1";
+        var updateCommand = "UPDATE Factuur SET prijsindicatie=@0, personen=@0, lagen=@1 WHERE ID=1";
         db.Execute(updateCommand, prijsindicatie,personen,lagen, ID);
         Response.Redirect("stap2-1.cshtml");
 

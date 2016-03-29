@@ -9,12 +9,12 @@ var aantalmensen= "";
     var lagen = "";
     var drop2= "";
     var prijsindicatie = "";
-    if(IsPost && Request.Form["Action"] == "Trouwtaart"){
+    if(IsPost && Request.Form["Action"] == "Trouwtaart3"){
         prijsindicatie = Request.Form["aantalmensen"];
         personen = Request.Form["aantalmensen"];
         lagen = Request.Form["drop2"];
         var db = Database.Open("FONDANTI2");
-        var updateCommand = "Update Factuur SET prijsindicatie=@0, personen=@0, lagen=@1 WHERE ID=1";
+        var updateCommand = "UPDATE Factuur SET prijsindicatie=@0, personen=@0, lagen=@1 WHERE ID=1";
         db.Execute(updateCommand, prijsindicatie,personen,lagen, ID);
         Response.Redirect("stap2-1.cshtml");
 
@@ -24,11 +24,11 @@ var aantalmensen= "";
 <div id="volwassentaart">
 
     <form method="post">
-        <input type="hidden" name="Action" value="Trouwtaart" />
+        <input type="hidden" name="Action" value="Trouwtaart3" />
         <div id="progress" style="height: 20px; background-color: #fff;">
             <div id="progressbar" style="background-color: #8A0B4B; width: 25%; height: 100%;"></div>
         </div>
-
+      
         <div id="contain">
             <div class="col-sm-4 col-md-4">
             aantal mensen

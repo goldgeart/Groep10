@@ -15,6 +15,36 @@
         Response.Redirect("stap2-1.cshtml");
 
     }
+    if(IsPost && Request.Form["Action"] == "Trouwtaart2"){
+        prijsindicatie = Request.Form["aantalmensen"];
+        personen = Request.Form["aantalmensen"];
+        lagen = Request.Form["drop2"];
+        var db = Database.Open("FONDANTI2");
+        var updateCommand = "Update Factuur SET prijsindicatie=@0, personen=@0, lagen=@1 WHERE ID=1";
+        db.Execute(updateCommand, prijsindicatie,personen,lagen, ID);
+        Response.Redirect("stap2-1.cshtml");
+
+    }
+        if(IsPost && Request.Form["Action"] == "Trouwtaart3"){
+        prijsindicatie = Request.Form["aantalmensen"];
+        personen = Request.Form["aantalmensen"];
+        lagen = Request.Form["drop2"];
+        var db = Database.Open("FONDANTI2");
+        var updateCommand = "Update Factuur SET prijsindicatie=@0, personen=@0, lagen=@1 WHERE ID=1";
+        db.Execute(updateCommand, prijsindicatie,personen,lagen, ID);
+        Response.Redirect("stap2-1.cshtml");
+
+    }
+        if(IsPost && Request.Form["Action"] == "Trouwtaart4"){
+        prijsindicatie = Request.Form["aantalmensen"];
+        personen = Request.Form["aantalmensen"];
+        lagen = Request.Form["drop2"];
+        var db = Database.Open("FONDANTI2");
+        var updateCommand = "Update Factuur SET prijsindicatie=@0, personen=@0, lagen=@1 WHERE ID=1";
+        db.Execute(updateCommand, prijsindicatie,personen,lagen, ID);
+        Response.Redirect("stap2-1.cshtml");
+
+    }
 
     }
 <!DOCTYPE html>

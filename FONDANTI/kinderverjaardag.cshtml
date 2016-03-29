@@ -5,46 +5,49 @@
     var lagen = "";
     var drop2= "";
     var prijsindicatie = "";
-    if(IsPost && Request.Form["Action"] == "Trouwtaart"){
+    if(IsPost && Request.Form["Action"] == "Trouwtaart2"){
         prijsindicatie = Request.Form["aantalmensen"];
         personen = Request.Form["aantalmensen"];
-        lagen = Request.Form["drop2"];
+        lagen = Request.Form["drop2.Uni"];
         var db = Database.Open("FONDANTI2");
-        var updateCommand = "Update Factuur SET prijsindicatie=@0, personen=@0, lagen=@1 WHERE ID=1";
+        var updateCommand = "UPDATE Factuur SET prijsindicatie=@0, personen=@0, lagen=@1 WHERE ID=1";
         db.Execute(updateCommand, prijsindicatie,personen,lagen, ID);
         Response.Redirect("stap2-1.cshtml");
 
     }
 }
 <div id="kindertaart">
-     <div id="progress" style="height: 20px; background-color: #fff;">
+<form method="post">
+    <input type="hidden" name="Action" value="Trouwtaart2" />
+    <div id="progress" style="height: 20px; background-color: #fff;">
         <div id="progressbar" style="background-color: #8A0B4B; width: 25%; height: 100%;"></div>
     </div>
-    <div id="contain">
-        <div class="col-sm-4 col-md-4">
+    
+        <div id="contain">
+            <div class="col-sm-4 col-md-4">
             aantal mensen
-            <input style="font-size: 15px" type="number" min="10" max="60" value="@aantal mensen" id="stap1">
-        </div>
-        <div class="col-sm-4 col-md-4">
-            <select style="font-size: 20px" name="@drop2" required id="stap2">
-                <option value="" disabled selected style="display: none;">aantal lagen</option>
-                <option value="1">1 Laag</option>
-                <option value="2">2 Lagen</option>
-                <option value="3">3 Lagen</option>
-                <option value="4">4 Lagen</option>
-            </select>
-        </div>
-        <div class="col-sm-4 col-md-4">
-            <div id="check">
-                <input style="font-size: 15px" type="checkbox" name="notenallergie" value="noten"> noten allergie<br>
-                <input style="font-size: 15px" type="checkbox" name="lactoseintollerant" value="lactose"> lactose intollerantie<br>
-                <input style="font-size: 15px" type="checkbox" name="glutenallergie" value="gluten"> gluten allergie<br>
+                <input style="font-size: 15px" type="number" min="10" max="60" name="aantalmensen" value="@aantalmensen" id="stap1">
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <select style="font-size: 20px" name="drop2" required id="stap2">
+                    <option value="" disabled selected style="display: none;">aantal lagen</option>
+                    <option value="1">1 Laag</option>
+                    <option value="2">2 Lagen</option>
+                    <option value="3">3 Lagen</option>
+                    <option value="4">4 Lagen</option>
+                </select>
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <div id="check">
+                    <input style="font-size: 15px" type="checkbox" name="notenallergie" value="noten"> noten allergie<br>
+                    <input style="font-size: 15px" type="checkbox" name="lactoseintollerant" value="lactose"> lactose intollerantie<br>
+                    <input style="font-size: 15px" type="checkbox" name="glutenallergie" value="gluten"> gluten allergie<br>
+                </div>
             </div>
         </div>
-    </div>
 
-    <input style="font-size: 20px" type="button" name="next" value="next" id="next1">
+        <input style="font-size: 20px" type="submit" name="next" value="next" id="next1">
 
-
+    </form>
 </div>
 
