@@ -8,8 +8,8 @@
     var Telefoonnummer = "";
     var Email = "";
     var GewensteDatum = "";
-    var AantalPersonen = "";
-    var AantalLagen = "";
+    var personen = "";
+    var lagen = "";
     var Allergieen = "";
     var PrijsIndicatie = "";
 
@@ -25,10 +25,10 @@
                     Postcode = row.Postcode;
                     Woonplaats = row.Woonplaats;
                     Telefoonnummer = row.Telefoonnummer;
-                    GewensteDatum = row["Gewenste datum"].ToString();
-                    AantalPersonen = row["Aantal Personen"].ToString();
-                    AantalLagen = row["Aantal lagen"].ToString();
-                    Allergieen = row.Allergieën;
+                    //GewensteDatum = row["Gewenste datum"].ToString();
+                    personen = row["personen"];
+                    lagen = row["lagen"];
+                    //Allergieen = row.Allergieën;
                     PrijsIndicatie = row.Prijsindicatie;
         }}
 
@@ -65,55 +65,45 @@
                         <input type="text" name="Telefoonnummer" value="@Telefoonnummer" maxlength="11"><br>
             Datum:<br>
                         <input type="date" name="Datum" value="@GewensteDatum"><br><br>
-                        <div id="knoppen">
-                            <input type="submit" value="Ja, het klopt.">
-                            <input type="reset" value="Herstellen.">
 
-                        </div>
-                        </div>
                     </div>
+                </div>
 
 
-                        <div id="TaartInformatie">
-                            <div class="col-sm-6 col-md-6">
-                                <h3>Taart informatie:</h3>
-                                <input type="hidden" name="Taart informatie">
+                <div id="TaartInformatie">
+                    <div class="col-sm-6 col-md-6">
+                        <h3>Taart informatie:</h3>
+                        <input type="hidden" name="Taart informatie">
         Taart type:<br>
-
-                                <input type="text" name="Taart-Type" value="Trouwtaart"><br>
-
-                                <input type="text" name="Taart-Type" value="Trouwtaart"><br>
+                        <input type="text" name="Taart-Type" value="Trouwtaart"><br>
         Aantal personen:<br>
-                                <input type="text" name="Taart-Type" value="@AantalPersonen"><br>
-
+                        <input type="text" name="Taart-Type" value="@personen"><br>
         Laag 1:<br>
-                                <input type="text" name="Laag 1" value="Fondant"><br>
+                        <input type="text" name="Laag 1" value="Fondant"><br>
         Laag 2:<br>
-                                <input type="text" name="Laag 2" value="Fondant"><br>
+                        <input type="text" name="Laag 2" value="Fondant"><br>
         Laag 3:<br>
-                                <input type="text" name="Laag 3" value="Fondant"><br>
+                        <input type="text" name="Laag 3" value="Fondant"><br>
         Laag 4:<br>
-                                <input type="text" name="Laag 4" value="Fondant"><br>
+                        <input type="text" name="Laag 4" value="Fondant"><br>
         Allergieën:<br>
-
-                                <input type="text" name="Allergie" value="Noten allergie"><br>
-        Foto:<br>
-                                <input type="file" name="Foto"><br>
-                            </div>
-                        </div>
+                        <input type="text" name="Allergie" value="Noten allergie"><br>
+        Foto link:<br>
+                        <input type="text" name="Foto" value=""><br>
                     </div>
+                </div>
+            </div>
         </form>
-
-        <input type="text" name="Allergie" value="@Allergieen">
-        <br>
         Prijs indicatie:
         <br>
         <input type="text" name="Prijs" value="@PrijsIndicatie">
         <br>
-        Foto (link):
-        <br>
-        <input type="text" name="Foto">
-        <br>
+                                <div id="knoppen">
+                            <input type="submit" value="Ja, het klopt.">
+                            <input type="reset" value="Herstellen.">
+
+                        </div>
+    
 </div>
 </div>
 </div>
