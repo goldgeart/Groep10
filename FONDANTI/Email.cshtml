@@ -1,5 +1,40 @@
 ﻿@{
+<<<<<<< HEAD
+=======
+    
+    var Naam = "";
+    var Adres = "";
+    var Postcode = "";
+    var Woonplaats = "";
+    var Telefoonnummer = "";
+    var Email = "";
+    var GewensteDatum = "";
+    var AantalPersonen = "";
+    var AantalLagen = "";
+    var Allergieen = "";
+    var PrijsIndicatie = "";
+
+    if(!IsPost){
+		{
+
+            var db = Database.Open("FONDANTI2");
+            var dbCommand = "SELECT * FROM Factuur WHERE ID = 1";
+            var row = db.QuerySingle(dbCommand, 1);
+                if(row != null) {
+                    Naam = row.Naam;
+                    Adres = row.Adres;
+                    Postcode = row.Postcode;
+                    Woonplaats = row.Woonplaats;
+                    Telefoonnummer = row.Telefoonnummer;
+                    GewensteDatum = row["Gewenste datum"].ToString();
+                    AantalPersonen = row["Aantal Personen"].ToString();
+                    AantalLagen = row["Aantal lagen"].ToString();
+                    Allergieen = row.Allergieën;
+                    PrijsIndicatie = row.Prijsindicatie;
+        }}
+>>>>>>> b2aebb682e2fc2c9fc42b4b5a1e9035f58ca1d0a
 }
+    }
 
 <!DOCTYPE html>
 <html>
@@ -13,6 +48,7 @@
 
         <div id="top-header"><h2 id="Hoofdtekst">Controleer uw gegevens.</h2></div>
 
+<<<<<<< HEAD
         <form action="MAILTO:shev22ppal@live.nl?subject=Taart Bestelling." method="post" enctype="text/plain">
             <div id="container">
                 <div id="KlantGegevens">
@@ -37,6 +73,29 @@
                             <input type="reset" value="Herstellen.">
                         </div>
                     </div>
+=======
+<form action="MAILTO:nic@wielens.net?subject=Taart Bestelling." method="post" enctype="text/plain">
+<div id="container">
+<div class="col-sm-6 col-md-6">
+<div id="KlantGegevens" class="col-sm-6 col-md-6">
+        <h3>Uw gegevens:</h3>
+            <input type="hidden" name="Klant informatie">
+            Volledige naam:<br>
+            <input type="text" name="Naam" value="@Naam"><br>
+            Adres:<br>
+            <input type="text" name="Adres" value="@Adres"><br>
+            Postcode:<br>
+            <input type="text" name="Postcode" value="@Postcode" maxlength="6"><br>
+            Woonplaats:<br>
+            <input type="text" name="Woonplaats" value="@Woonplaats"><br>
+            Telefoon nummer:<br>
+            <input type="text" name="Telefoonnummer" value="@Telefoonnummer" maxlength="11"><br>
+            Datum:<br>
+            <input type="date" name="Datum" value="@GewensteDatum"><br><br>
+                <div id="knoppen">
+                <input type="submit" value="Ja, het klopt.">
+                <input type="reset" value="Herstellen.">
+>>>>>>> b2aebb682e2fc2c9fc42b4b5a1e9035f58ca1d0a
                 </div>
 
 
@@ -46,7 +105,13 @@
                         <h3>Taart informatie:</h3>
                         <input type="hidden" name="Taart informatie">
         Taart type:<br>
+<<<<<<< HEAD
                         <input type="text" name="Taart-Type" value="Trouwtaart"><br>
+=======
+        <input type="text" name="Taart-Type" value="Trouwtaart"><br>
+        Aantal personen:<br>
+        <input type="text" name="Taart-Type" value="@AantalPersonen"><br>
+>>>>>>> b2aebb682e2fc2c9fc42b4b5a1e9035f58ca1d0a
         Laag 1:<br>
                         <input type="text" name="Laag 1" value="Fondant"><br>
         Laag 2:<br>
@@ -56,6 +121,7 @@
         Laag 4:<br>
                         <input type="text" name="Laag 4" value="Fondant"><br>
         Allergieën:<br>
+<<<<<<< HEAD
                         <input type="text" name="Allergie" value="Noten allergie"><br>
         Foto:<br>
                         <input type="file" name="Foto"><br>
@@ -63,6 +129,17 @@
                 </div>
             </div>
         </form>
+=======
+        <input type="text" name="Allergie" value="@Allergieen"><br>
+        Prijs indicatie:<br>
+        <input type="text" name="Prijs" value="@PrijsIndicatie"><br>
+        Foto (link):<br>
+        <input type="text" name="Foto"><br>
+</div>
+</div>
+</div>
+</form>
+>>>>>>> b2aebb682e2fc2c9fc42b4b5a1e9035f58ca1d0a
 
     </body>
 </html>
