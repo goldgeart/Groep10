@@ -2,7 +2,7 @@
     
       var Naam = Request.Form["Naam"];
       var Prijs = Request.Form["Prijs"];
-      var CatID = "";
+      var CatID = Request.QueryString["ID"];
 
     
 
@@ -17,8 +17,8 @@
     if(IsPost ){
       
         var db = Database.Open("FONDANTI2");
-        var insertCommand = "INSERT INTO Ingredienten (CatID, Naam, Prijs) VALUES(@0, @1, @2)";
-        db.Execute(insertCommand, CatID, Naam, Prijs);
+        var insertCommand = "INSERT INTO Ingredienten (Naam, Prijs, CatID) VALUES(@0, @1, @2)";
+        db.Execute(insertCommand, Naam, Prijs, CatID);
         Validation.AddFormError("Ingredient is nu toegevoegd");
         Response.Redirect("~/Admin");
     }
@@ -41,12 +41,6 @@
       <input type="text" name="Prijs" value="@Request.Form["Prijs"]" />
       @Html.ValidationMessage("Prijs")
     </p>
-            
-    <p><label for="CatID">CatID:</label>
-      <input type="text" name="CatID" value="@CatID" />
-      @Html.ValidationMessage("CatID")
-    </p>
-
     <p><input type="submit" name="buttonSubmit" value="Voeg product toe." /></p>
   </fieldset>
   </form> 
