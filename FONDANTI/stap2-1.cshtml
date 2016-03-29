@@ -1,9 +1,9 @@
 ﻿@{
     var db = Database.Open("FONDANTI2");
-    var selectQueryStringBekleding = "SELECT * FROM Ingredienten WHERE CatID=1";
-    var selectQueryStringType = "SELECT * FROM Ingredienten WHERE CatID=2";
-    var selectQueryStringVulling = "SELECT * FROM Ingredienten WHERE CatID=3";
-    var selectQueryStringDecoratie = "SELECT * FROM Ingredienten WHERE CatID=4";
+    var selectQueryStringBekleding = "SELECT * FROM Ingredienten WHERE CatID=1 AND Beschikbaar ='True'";
+    var selectQueryStringType = "SELECT * FROM Ingredienten WHERE CatID=2 AND Beschikbaar ='True'";
+    var selectQueryStringVulling = "SELECT * FROM Ingredienten WHERE CatID=3 AND Beschikbaar ='True'";
+    var selectQueryStringDecoratie = "SELECT * FROM Ingredienten WHERE CatID=4 AND Beschikbaar ='True'";
 }
 <div id="trouwtaart-2">
 
