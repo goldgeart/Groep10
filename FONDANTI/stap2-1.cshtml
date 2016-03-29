@@ -1,12 +1,19 @@
 ﻿@{
+   
     var db = Database.Open("FONDANTI2");
     var selectQueryStringBekleding = "SELECT * FROM Ingredienten WHERE CatID=1";
     var selectQueryStringType = "SELECT * FROM Ingredienten WHERE CatID=2";
     var selectQueryStringVulling = "SELECT * FROM Ingredienten WHERE CatID=3";
     var selectQueryStringDecoratie = "SELECT * FROM Ingredienten WHERE CatID=4";
+    if(IsPost && Request.Form["Action"] == "Trouwtaart2"){
+        
+        Response.Redirect("stap3-1.cshtml");
+    }
+  
 }
 <div id="trouwtaart-2">
-
+    <form method="post">
+    <input type="hidden" name="Action" value="Trouwtaart2" />
     <div id="progress" style="height: 20px; background-color: #fff;">
         <div id="progressbar" style="background-color: #8A0B4B; width: 50%; height: 100%;"></div>
     </div>
@@ -58,7 +65,7 @@
 
     </div>
 
-    <input style="font-size: 20px" type="button" name="next" value="next" id="next2">
-
+    <input style="font-size: 20px" type="submit" name="next" value="next" id="next2">
+        </form>
 
 </div>

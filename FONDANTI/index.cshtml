@@ -1,3 +1,19 @@
+@{
+    var aantalmensen= "";
+    var prijsindicatie = "";
+    if(IsPost && Request.Form["Action"] == "Trouwtaart"){
+        prijsindicatie = Request.Form["aantalmensen"];
+        var db = Database.Open("FONDANTI2");
+        var insertCommand = "INSERT INTO Factuur (prijsindicatie) values (@0)";
+        db.Execute(insertCommand, prijsindicatie);
+        Response.Redirect("stap2-1.cshtml");
+    }
+        if(IsPost && Request.Form["Action"] == "Trouwtaart2"){
+        
+        Response.Redirect("stap3-1.cshtml");
+    }
+    }
+
 
 <!DOCTYPE html>
 <html>
@@ -109,7 +125,7 @@
         </script>
     </head>
     <body>
-
+        <form method="post"> 
         <div id="shop">
             <div class="col-sm-12 col-md-3">
                 <img src="img/taarttrouwen.svg" alt="trouwtaart" id="taart1" />
@@ -128,8 +144,8 @@
 
             </div>
         </div>
-
-
+            
+</form>
         <div id="top-header">
             <div class="content-center">
                 <div id="header-logo"><img src="img/fondanti-logo.png" alt="Fondanti logo" /></div>

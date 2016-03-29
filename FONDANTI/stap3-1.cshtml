@@ -1,4 +1,14 @@
-﻿<div id="trouwtaart-3">
+﻿@{
+      if(IsPost && Request.Form["Action"] == "Trouwtaart3"){
+        
+        Response.Redirect("factuur-1.cshtml");
+    }  
+
+}
+
+<div id="trouwtaart-3">
+     <form method="post">
+    <input type="hidden" name="Action" value="Trouwtaart3" />
     <div id="progress" style="height: 20px; background-color: #fff;">
         <div id="progressbar" style="background-color: #8A0B4B; width: 75%; height: 100%;"></div>
     </div>
@@ -11,5 +21,6 @@
             <textarea id="stap6" rows="4">Schrijf hier extra informatie als het nodig is...</textarea>
         </div>
     </div>
-    <input style="font-size: 20px" type="button" name="next" value="next" id="next3">
+    <input style="font-size: 20px" type="submit" name="next" value="next" id="next3">
+         </form>
 </div>

@@ -1,35 +1,50 @@
+@{
+ //int count = Convert.ToInt32(Session["aantalmensen"]);
 
-
+           var aantalmensen= "";
+    var prijsindicatie = "";
+    if(IsPost && Request.Form["Action"] == "Trouwtaart"){
+        prijsindicatie = Request.Form["aantalmensen"];
+        var db = Database.Open("FONDANTI2");
+        var insertCommand = "INSERT INTO Factuur (prijsindicatie) values (@0)";
+        db.Execute(insertCommand, prijsindicatie);
+        Response.Redirect("stap2-1.cshtml");
+    }
+    
+}
 <div id="trouwtaart">
 
-    <div id="progress" style="height: 20px; background-color: #fff;">
-        <div id="progressbar" style="background-color: #8A0B4B; width: 25%; height: 100%;"></div>
-    </div>
-    <div id="contain">
-        <div class="col-sm-4 col-md-4">
+    <form method="post">
+        <input type="hidden" name="Action" value="Trouwtaart" />
+        <div id="progress" style="height: 20px; background-color: #fff;">
+            <div id="progressbar" style="background-color: #8A0B4B; width: 25%; height: 100%;"></div>
+        </div>
+
+        <div id="contain">
+            <div class="col-sm-4 col-md-4">
             aantal mensen
-            <input style="font-size: 15px" type="number" min="10" max="60" value="aantal mensen" id="stap1">
-        </div>
-        <div class="col-sm-4 col-md-4">
-            <select style="font-size: 20px" name="drop2" required id="stap2">
-                <option value="" disabled selected style="display: none;">aantal lagen</option>
-                <option value="1 laag">1 Laag</option>
-                <option value="2 lagen">2 Lagen</option>
-                <option value="3 lagen">3 Lagen</option>
-                <option value="4 lagen">4 Lagen</option>
-            </select>
-        </div>
-        <div class="col-sm-4 col-md-4">
-            <div id="check">
-                <input style="font-size: 15px" type="checkbox" name="notenallergie" value="noten"> noten allergie<br>
-                <input style="font-size: 15px" type="checkbox" name="lactoseintollerant" value="lactose"> lactose intollerantie<br>
-                <input style="font-size: 15px" type="checkbox" name="glutenallergie" value="gluten"> gluten allergie<br>
+                <input style="font-size: 15px" type="number" name="aantalmensen" min="10" max="60" value="@aantalmensen" id="stap1">
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <select style="font-size: 20px" name="drop2" required id="stap2">
+                    <option value="" disabled selected style="display: none;">aantal lagen</option>
+                    <option value="1 laag">1 Laag</option>
+                    <option value="2 lagen">2 Lagen</option>
+                    <option value="3 lagen">3 Lagen</option>
+                    <option value="4 lagen">4 Lagen</option>
+                </select>
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <div id="check">
+                    <input style="font-size: 15px" type="checkbox" name="notenallergie" value="noten"> noten allergie<br>
+                    <input style="font-size: 15px" type="checkbox" name="lactoseintollerant" value="lactose"> lactose intollerantie<br>
+                    <input style="font-size: 15px" type="checkbox" name="glutenallergie" value="gluten"> gluten allergie<br>
+                </div>
             </div>
         </div>
-    </div>
 
-    <input style="font-size: 20px" type="button" name="next" value="next" id="next1">
+        <input style="font-size: 20px" type="submit" name="next" value="next" id="next1">
 
-
+    </form>
 </div>
 
