@@ -26,7 +26,7 @@
                     Postcode = row.Postcode;
                     Woonplaats = row.Woonplaats;
                     Telefoonnummer = row.Telefoonnummer;
-                   // GewensteDatum = row["Gewenste datum"].ToString();
+                    GewensteDatum = row["Gewenste datum"].ToString("dd/MM/yyyy");
                     AantalPersonen = row["Personen"];
                     AantalLagen = row["lagen"];
                     noten = row.noten;
@@ -66,7 +66,7 @@
             Telefoon nummer:<br>
             <input type="text" name="Telefoonnummer" value="@Telefoonnummer" maxlength="11"><br>
             Datum:<br>
-            <input type="date" name="Datum" value="@GewensteDatum"><br><br>
+            <input type="text" name="Datum" value="@GewensteDatum"><br><br>
                 <div id="knoppen">
                 <input type="submit" value="Ja, het klopt.">
                 <input type="reset" value="Herstellen.">
