@@ -1,17 +1,19 @@
 @{
     var aantalmensen= "";
-    var personen= "";
-    var drop2= "";
+    var personen = "";
     var ID = 1;
     var lagen = "";
+    var stap2= "";
     var prijsindicatie = "";
+
+
     if(IsPost && Request.Form["Action"] == "Trouwtaart"){
         prijsindicatie = Request.Form["aantalmensen"];
         personen = Request.Form["aantalmensen"];
-        lagen = Request.Form["stap2"];
+        lagen = Request.Form["stap2.SelectValue"];
         var db = Database.Open("FONDANTI2");
-        var updateCommand = "Update Factuur SET prijsindicatie=@0, personen=@0, lagen=@1 WHERE ID=1";
-        db.Execute(updateCommand, prijsindicatie,personen,lagen, ID);
+        var updateCommand = "UPDATE Factuur SET prijsindicatie=@0, personen=@1, lagen=@2 WHERE ID=1";
+        db.Execute(updateCommand, prijsindicatie, personen, lagen);
         Response.Redirect("stap2-1.cshtml");
 
     }
@@ -61,7 +63,34 @@
         <link href="css/reset.css" rel="stylesheet" type="text/css" />
         <link href="css/fondanti.css" rel="stylesheet" type="text/css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-      
+        <script>
+            $(document).ready(function () {
+                $("#taart1").click(function () {
+                    $("#shop").load("trouwtaart.cshtml")
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("#taart2").click(function () {
+                    $("#shop").load("kinderverjaardag.cshtml")
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("#taart3").click(function () {
+                    $("#shop").load("volwassentaart.cshtml")
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("#taart4").click(function () {
+                    $("#shop").load("overige.cshtml")
+                });
+            });
+        </script>
     </head>
     <body>
         <form method="post"> 

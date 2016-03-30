@@ -1,6 +1,5 @@
 ﻿@{
-
-
+    
     var Naam = "";
     var Adres = "";
     var Postcode = "";
@@ -8,13 +7,15 @@
     var Telefoonnummer = "";
     var Email = "";
     var GewensteDatum = "";
-    var personen = "";
-    var lagen = "";
-    var Allergieen = "";
+    var AantalPersonen = "";
+    var AantalLagen = "";
+    var lactose = "";
+    var noten = "";
+    var gluten = "";
     var PrijsIndicatie = "";
 
     if(!IsPost){
-        {
+		{
 
             var db = Database.Open("FONDANTI2");
             var dbCommand = "SELECT * FROM Factuur WHERE ID = 1";
@@ -25,15 +26,16 @@
                     Postcode = row.Postcode;
                     Woonplaats = row.Woonplaats;
                     Telefoonnummer = row.Telefoonnummer;
-                    //GewensteDatum = row["Gewenste datum"].ToString();
-                    personen = row["personen"];
-                    lagen = row["lagen"];
-                    //Allergieen = row.Allergieën;
+                    GewensteDatum = row["Gewenste datum"].ToString("dd/MM/yyyy");
+                    AantalPersonen = row["Personen"];
+                    AantalLagen = row["lagen"];
+                    noten = row.noten;
+                    gluten = row.gluten;
+                    lactose = row.lactose;
                     PrijsIndicatie = row.Prijsindicatie;
         }}
-
 }
-}
+    }
 
 <!DOCTYPE html>
 <html>
@@ -43,70 +45,62 @@
         <meta charset="utf-8" />
         <title>Verstuur bestelling.</title>
     </head>
-    <body>
+<body>
 
-        <div id="top-header"><h2 id="Hoofdtekst">Controleer uw gegevens.</h2></div>
+  <div id="top-header"><h2 id="Hoofdtekst">Controleer uw gegevens.</h2></div>
 
-        <form action="MAILTO:nic@wielens.net?subject=Taart Bestelling." method="post" enctype="text/plain">
-            <div id="container">
-                <div class="col-sm-6 col-md-6">
-                    <div id="KlantGegevens" class="col-sm-6 col-md-6">
-                        <h3>Uw gegevens:</h3>
-                        <input type="hidden" name="Klant informatie">
+<form action="MAILTO:nic@wielens.net?subject=Taart Bestelling." method="post" enctype="text/plain">
+<div id="container">
+<div class="col-sm-6 col-md-6">
+<div id="KlantGegevens" class="col-sm-6 col-md-6">
+        <h3>Uw gegevens:</h3>
+            <input type="hidden" name="Klant informatie">
             Volledige naam:<br>
-                        <input type="text" name="Naam" value="@Naam"><br>
+            <input type="text" name="Naam" value="@Naam" required><br>
             Adres:<br>
-                        <input type="text" name="Adres" value="@Adres"><br>
+            <input type="text" name="Adres" value="@Adres" required><br>
             Postcode:<br>
-                        <input type="text" name="Postcode" value="@Postcode" maxlength="6"><br>
+            <input type="text" name="Postcode" value="@Postcode" maxlength="6" required><br>
             Woonplaats:<br>
-                        <input type="text" name="Woonplaats" value="@Woonplaats"><br>
+            <input type="text" name="Woonplaats" value="@Woonplaats" required><br>
             Telefoon nummer:<br>
-                        <input type="text" name="Telefoonnummer" value="@Telefoonnummer" maxlength="11"><br>
+            <input type="text" name="Telefoonnummer" value="@Telefoonnummer" maxlength="11" required><br>
             Datum:<br>
-                        <input type="date" name="Datum" value="@GewensteDatum"><br><br>
-
-                    </div>
+            <input type="text" name="Datum" value="@GewensteDatum" maxlength ="10" required><br><br>
+                <div id="knoppen">  
+                <input type="submit" value="Ja, het klopt.">
+                <input type="reset" value="Herstellen.">
                 </div>
+</div>
+</div>
 
 
-                <div id="TaartInformatie">
-                    <div class="col-sm-6 col-md-6">
-                        <h3>Taart informatie:</h3>
-                        <input type="hidden" name="Taart informatie">
+<div class="col-sm-6 col-md-6">
+<div id="TaartInformatie">
+    <h3>Taart informatie:</h3>
+        <input type="hidden" name="Taart informatie">
         Taart type:<br>
-                        <input type="text" name="Taart-Type" value="Trouwtaart"><br>
+        <input type="text" name="Taart-Type" value="Trouwtaart" required><br>
         Aantal personen:<br>
-                        <input type="text" name="Taart-Type" value="@personen"><br>
+        <input type="text" name="Taart-Type" value="@AantalPersonen" required><br>
         Laag 1:<br>
-                        <input type="text" name="Laag 1" value="Fondant"><br>
+        <input type="text" name="Laag 1" value="Fondant" required><br>
         Laag 2:<br>
-                        <input type="text" name="Laag 2" value="Fondant"><br>
+        <input type="text" name="Laag 2" value="Fondant"><br>
         Laag 3:<br>
-                        <input type="text" name="Laag 3" value="Fondant"><br>
+        <input type="text" name="Laag 3" value="Fondant"><br>
         Laag 4:<br>
-                        <input type="text" name="Laag 4" value="Fondant"><br>
+        <input type="text" name="Laag 4" value="Fondant"><br>
         Allergieën:<br>
-                        <input type="text" name="Allergie" value="Noten allergie"><br>
-        Foto link:<br>
-                        <input type="text" name="Foto" value=""><br>
-                    </div>
-                </div>
-            </div>
-        </form>
-        Prijs indicatie:
-        <br>
-        <input type="text" name="Prijs" value="@PrijsIndicatie">
-        <br>
-                                <div id="knoppen">
-                            <input type="submit" value="Ja, het klopt.">
-                            <input type="reset" value="Herstellen.">
-
-                        </div>
-    
+        <input type="text" name="Allergie" value="@noten"><br>
+        Prijs indicatie:<br>
+        <input type="text" name="Prijs" value="@PrijsIndicatie"><br>
+        Foto (link):<br>
+        <input type="text" name="Foto"><br>
 </div>
 </div>
 </div>
 </form>
-    </body>
+
+</body>
 </html>
