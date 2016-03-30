@@ -56,17 +56,17 @@
         <h3>Uw gegevens:</h3>
             <input type="hidden" name="Klant informatie">
             Volledige naam:<br>
-            <input type="text" name="Naam" value="@Naam"><br>
+            <input type="text" name="Naam" value="@Naam" required><br>
             Adres:<br>
-            <input type="text" name="Adres" value="@Adres"><br>
+            <input type="text" name="Adres" value="@Adres" required><br>
             Postcode:<br>
-            <input type="text" name="Postcode" value="@Postcode" maxlength="6"><br>
+            <input type="text" name="Postcode" value="@Postcode" maxlength="6" required><br>
             Woonplaats:<br>
-            <input type="text" name="Woonplaats" value="@Woonplaats"><br>
+            <input type="text" name="Woonplaats" value="@Woonplaats" required><br>
             Telefoon nummer:<br>
-            <input type="text" name="Telefoonnummer" value="@Telefoonnummer" maxlength="11"><br>
+            <input type="text" name="Telefoonnummer" value="@Telefoonnummer" maxlength="11" required><br>
             Datum:<br>
-            <input type="text" name="Datum" value="@GewensteDatum" maxlength ="10"><br><br>
+            <input type="text" name="Datum" value="@GewensteDatum" maxlength ="10" required><br><br>
                 <div id="knoppen">  
                 <input type="submit" value="Ja, het klopt.">
                 <input type="reset" value="Herstellen.">
@@ -80,11 +80,11 @@
     <h3>Taart informatie:</h3>
         <input type="hidden" name="Taart informatie">
         Taart type:<br>
-        <input type="text" name="Taart-Type" value="Trouwtaart"><br>
+        <input type="text" name="Taart-Type" value="Trouwtaart" required><br>
         Aantal personen:<br>
-        <input type="text" name="Taart-Type" value="@AantalPersonen"><br>
+        <input type="text" name="Taart-Type" value="@AantalPersonen" required><br>
         Laag 1:<br>
-        <input type="text" name="Laag 1" value="Fondant"><br>
+        <input type="text" name="Laag 1" value="Fondant" required><br>
         Laag 2:<br>
         <input type="text" name="Laag 2" value="Fondant"><br>
         Laag 3:<br>
