@@ -92,6 +92,43 @@
             </div>
         </div>
 
+        <div class="col-sm-6 col-md-6">
+            <div class="col-sm-12 col-md-12">
+                <select style="font-size: 20px" name="drop2" required id="stap4">
+                    <option value="" disabled selected style="display: none;">Bekleding</option>
+                    @foreach(var row in db.Query(selectQueryStringBekleding)){
+                        <option value="1 laag">@row.Naam</option>
+                    }
+
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12">
+            <select style="font-size: 20px" name="drop2" required id="stap4-2">
+                <option value="" disabled selected style="display: none;">Type</option>
+                @foreach(var row in db.Query(selectQueryStringType)){
+                    <option value="1 laag">@row.Naam</option>
+                }
+            </select>
+        </div>
+        <div class="col-sm-12 col-md-12">
+            <select style="font-size: 20px" name="drop2" required id="stap4-3">
+                <option value="" disabled selected style="display: none;">Vulling</option>
+                @foreach(var row in db.Query(selectQueryStringVulling)){
+                    <option value="1 laag">@row.Naam</option>
+                }
+            </select>
+        </div>
+        <div class="col-sm-12 col-md-12">
+            <select style="font-size: 20px" name="drop2" required id="stap4-4">
+                <option value="" disabled selected style="display: none;">Decoratie</option>
+                @foreach(var row in db.Query(selectQueryStringDecoratie)){
+                    <option value="1 laag">@row.Naam</option>
+                }
+            </select>
+        </div>
+
+
 
         <div id="top-header">
             <div class="content-center">
@@ -137,6 +174,7 @@
                     <p>Elk kind heeft zijn eigen droom. Wij maken van deze droom een mooie taart. Niks is te gek: een <a href="https://www.facebook.com/media/set/?set=a.265948366906727.1073741848.149619215206310&type=3">stoere Troetelbeertjes taart</a>, <a href="https://www.facebook.com/media/set/?set=a.287998528035044.1073741857.149619215206310&type=3">een piratentaart met schatkaart</a>, <a href="https://www.facebook.com/media/set/?set=a.280738755427688.1073741853.149619215206310&type=3">prinsessen</a>, <a href="https://www.facebook.com/media/set/?set=a.270813389753558.1073741849.149619215206310&type=3">zeemeerminnen</a>, etc.</p>
                     <p>De taarten zijn genoeg voor 20 tot 25 stukken maar kunnen op verzoek groter gemaakt worden. Glutenvrij behoort ook tot de opties.</p>
                 </div>
+
             </div>
         </div>
 
