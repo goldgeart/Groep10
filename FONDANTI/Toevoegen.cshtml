@@ -1,0 +1,46 @@
+﻿@{
+    
+      var Naam = Request.Form["Naam"];
+      var Prijs = Request.Form["Prijs"];
+      var CatID = Request.QueryString["ID"];
+
+    
+
+   
+    Page.Ingredient = "Voeg een Ingredient toe";
+    Validation.RequireField("Ingredienten", "Er moet een ingredient ingevoerd worden");
+    Validation.RequireField("Prijs", "Er is nog geen prijs ingevoerd");
+
+    
+    
+
+    if(IsPost ){
+      
+        var db = Database.Open("FONDANTI2");
+        var insertCommand = "INSERT INTO Ingredienten (Naam, Prijs, CatID) VALUES(@0, @1, @2)";
+        db.Execute(insertCommand, Naam, Prijs, CatID);
+        Validation.AddFormError("Ingredient is nu toegevoegd");
+        Response.Redirect("~/Admin");
+    }
+
+
+    }
+
+
+  <h2>Voeg een kado toe.</h2>
+    @Html.ValidationSummary()
+ <form method="post">
+  <fieldset>
+    <legend>Ingredienten informatie.</legend>
+    <p><label for="Ingredienten">Ingredienten:</label>
+      <input type="text" name="Naam" value="@Request.Form["Naam"]" />
+      @Html.ValidationMessage("Naam")
+    </p>
+
+    <p><label for="Prijs">Prijs:</label>
+      <input type="text" name="Prijs" value="@Request.Form["Prijs"]" />
+      @Html.ValidationMessage("Prijs")
+    </p>
+    <p><input type="submit" name="buttonSubmit" value="Voeg product toe." /></p>
+  </fieldset>
+  </form> 

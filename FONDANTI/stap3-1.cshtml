@@ -1,4 +1,10 @@
+﻿@{
+      if(IsPost && Request.Form["Action"] == "Trouwtaart3"){
 
+        Response.Redirect("email.cshtml");
+    }  
+
+}
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,86 +19,30 @@
         <link href="css/reset.css" rel="stylesheet" type="text/css" />
         <link href="css/fondanti.css" rel="stylesheet" type="text/css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#taart1").click(function () {
-                    $("#shop").load("trouwtaart.cshtml", function () {
-                        $("#next1").click(function () {
-                            if ($("#stap1").val() && $("#stap2").val()) {
-                                $("#shop").load("stap2-1.cshtml", function () {
-                                    $("#next2").click(function () {
-                                        $("#shop").load("Login.cshtml");
-
-                                    });
-                                });
-                            }else (alert("vul alles in"))
-                        });
-                    });
-                });
-            });
-        </script>
-        <script>
-            $(document).ready(function () {
-                $("#taart2").click(function () {
-                    $("#shop").load("kinderverjaardag.cshtml", function () {
-                         $("#next1").click(function () {
-                        if ($("#stap1").val() && $("#stap2").val()) {
-                            $("#shop").load("stap2-2.cshtml");
-                        } else (alert("vul alles in"))
-                    });
-                    });             
-                });
-            });
-        </script>
-        <script>
-            $(document).ready(function () {
-                $("#taart3").click(function () {
-                    $("#shop").load("volwassentaart.cshtml", function () {
-                         $("#next1").click(function () {
-                        if ($("#stap1").val() && $("#stap2").val()) {
-                            $("#shop").load("stap2-3.cshtml");
-                        } else (alert("vul alles in"))
-                    });
-                    });             
-                });
-            });
-        </script>
-        <script>
-            $(document).ready(function () {
-                $("#taart4").click(function () {
-                    $("#shop").load("overige.cshtml", function () {
-                         $("#next1").click(function () {
-                        if ($("#stap1").val() && $("#stap2").val()) {
-                            $("#shop").load("stap2-4.cshtml");
-                        } else (alert("vul alles in"))
-                    });
-                    });             
-                });
-            });
-        </script>
-
+        
     </head>
     <body>
 
-        <div id="shop">
-            <div class="col-sm-12 col-md-3">
-                <img src="img/taarttrouwen.svg" alt="trouwtaart" id="taart1" />
-          
+            <div id="shop" style="display: block;">
+                <div id="trouwtaart-3">
+                    <form method="post">
+                        <input type="hidden" name="Action" value="Trouwtaart3" />
+                        <div id="progress" style="height: 20px; background-color: #fff;">
+                            <div id="progressbar" style="background-color: #8A0B4B; width: 75%; height: 100%;"></div>
+                        </div>
+                        <div class="contain">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="col-sm-12 col-md-12"><div id="stap5">plak hier de link van een foto die u als voorbeeld wil gebruiken.</div></div>
+                                <div class="col-sm-12 col-md-12"><input type="text" value="" id="stap5-2"></div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <textarea id="stap6" rows="4">ERROR!NIETVERGETENSchrijf hier extra informatie als het nodig is...</textarea>
+                            </div>
+                        </div>
+                        <input style="font-size: 20px" type="submit" name="next" value="next" id="next3">
+                    </form>
+                </div>
             </div>
-            <div class="col-sm-12 col-md-3 ">
-                <img src="img/taartverjaardagkind.svg" alt="verjaardags taarten voor kinderen" id="taart2" />
-                
-            </div>
-            <div class="col-sm-12 col-md-3 ">
-                <img src="img/taartverjaardagvolwassene.svg" alt="verjaardags taarten voor volwassenen" id="taart3" />
-                
-            </div>
-            <div class="col-sm-12 col-md-3 ">
-                <img src="img/taartanders.svg" alt="taarten voor andere gelegenheden" id="taart4" />
-              
-            </div>
-        </div>
-
 
         <div id="top-header">
             <div class="content-center">
