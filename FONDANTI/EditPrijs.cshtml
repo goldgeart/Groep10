@@ -1,4 +1,7 @@
 ﻿@{
+    if(Session["Login"] == null){
+       Response.Redirect("Login.cshtml");
+    }
 
       var db = Database.Open("FONDANTI2");
       var Prijs = Request.Form["Prijs"];
