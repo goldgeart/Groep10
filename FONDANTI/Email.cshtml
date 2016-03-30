@@ -9,7 +9,9 @@
     var GewensteDatum = "";
     var AantalPersonen = "";
     var AantalLagen = "";
-    var Allergieen = "";
+    var lactose = "";
+    var noten = "";
+    var gluten = "";
     var PrijsIndicatie = "";
 
     if(!IsPost){
@@ -24,10 +26,12 @@
                     Postcode = row.Postcode;
                     Woonplaats = row.Woonplaats;
                     Telefoonnummer = row.Telefoonnummer;
-                    GewensteDatum = row["Gewenste datum"].ToString();
-                    AantalPersonen = row["Aantal Personen"].ToString();
-                    AantalLagen = row["Aantal lagen"].ToString();
-                    Allergieen = row.Allergieën;
+                   // GewensteDatum = row["Gewenste datum"].ToString();
+                    AantalPersonen = row["Personen"];
+                    AantalLagen = row["lagen"];
+                    noten = row.noten;
+                    gluten = row.gluten;
+                    lactose = row.lactose;
                     PrijsIndicatie = row.Prijsindicatie;
         }}
 }
@@ -88,7 +92,7 @@
         Laag 4:<br>
         <input type="text" name="Laag 4" value="Fondant"><br>
         Allergieën:<br>
-        <input type="text" name="Allergie" value="@Allergieen"><br>
+        <input type="text" name="Allergie" value="@noten"><br>
         Prijs indicatie:<br>
         <input type="text" name="Prijs" value="@PrijsIndicatie"><br>
         Foto (link):<br>
