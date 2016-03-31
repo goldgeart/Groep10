@@ -1,0 +1,31 @@
+﻿@{
+        WebImage photo = null;
+    var newFileName = "";
+    var imagePath = "";
+    var comments="";
+    var Prijsindicatie= "";
+      if(IsPost){
+          photo = WebImage.GetImageFromRequest();
+          if (photo != null)
+          {
+              newFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(photo.FileName);
+              imagePath = @"images\" + newFileName;
+              
+              photo.Save(@"~\" + imagePath); 
+          }
+          }
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+                                    <div class="col-sm-12 col-md-12"><label for="file">Upload Plaatje:</label>
+                                                             <input type="file" name="Image" id="file"/></div>
+        
+    </body>
+</html>

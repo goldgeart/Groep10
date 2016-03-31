@@ -1,5 +1,6 @@
 ﻿@{
-    
+
+
     var Naam = "";
     var Adres = "";
     var Postcode = "";
@@ -13,11 +14,64 @@
     var noten = "";
     var gluten = "";
     var PrijsIndicatie = "";
+    var type = "";
+    var foto = "";
+    var textarea = "";
+    var disp2 ="none";
+    var disp3 = "none";
+    var disp4 = "none";
+    var bekleding1 = "";
+    var bekleding2 = "";
+    var bekleding3 = "";
+    var bekleding4 = "";
+    var type1 = "";
+    var type2 = "";
+    var type3 = "";
+    var type4 = "";
+    var vulling1 = "";
+    var vulling2 = "";
+    var vulling3 = "";
+    var vulling4 = "";
+    var decoratie1 = "";
+    var decoratie2 = "";
+    var decoratie3 = "";
+    var decoratie4 = "";
+            var db = Database.Open("FONDANTI2");
 
     if(!IsPost){
-		{
+            var laag1 = "SELECT * FROM Lagen WHERE LaagID=1";
+            var row1 = db.QuerySingle(laag1,1);
+            if(row1 != null) {
+                bekleding1 = row1.Bekleding;
+                type1 = row1.Type;
+                vulling1 = row1.Vulling;
+                decoratie1 = row1.Decoratie;
+            }
+            var laag2 = "SELECT * FROM Lagen WHERE LaagID=2";
+            var row2 = db.QuerySingle(laag2,1);
+            if(row2 != null) {
+                bekleding2 = row2.Bekleding;
+                type2 = row2.Type;
+                vulling2 = row2.Vulling;
+                decoratie2 = row2.Decoratie;
+            }
+            var laag3 = "SELECT * FROM Lagen WHERE LaagID=3";
+            var row3 = db.QuerySingle(laag3,1);
+            if(row3 != null) {
+                bekleding3 = row3.Bekleding;
+                type3 = row3.Type;
+                vulling3 = row3.Vulling;
+                decoratie3 = row3.Decoratie;
+            }
+            var laag4 = "SELECT * FROM Lagen WHERE LaagID=4";
+            var row4 = db.QuerySingle(laag4,1);
+            if(row4 != null) {
+                bekleding4 = row4.Bekleding;
+                type4 = row4.Type;
+                vulling4 = row4.Vulling;
+                decoratie4 = row4.Decoratie;
+            }
 
-            var db = Database.Open("FONDANTI2");
             var dbCommand = "SELECT * FROM Factuur WHERE ID = 1";
             var row = db.QuerySingle(dbCommand, 1);
                 if(row != null) {
@@ -26,16 +80,46 @@
                     Postcode = row.Postcode;
                     Woonplaats = row.Woonplaats;
                     Telefoonnummer = row.Telefoonnummer;
-                   // GewensteDatum = row["Gewenste datum"].ToString();
-                    AantalPersonen = row["Personen"];
-                    AantalLagen = row["lagen"];
+                    GewensteDatum = row.datum;
+                    AantalPersonen = row.Personen;
+                    AantalLagen = row.lagen;
                     noten = row.noten;
                     gluten = row.gluten;
                     lactose = row.lactose;
                     PrijsIndicatie = row.Prijsindicatie;
-        }}
-}
+                    type = row.type;
+                    Email = row.Email;
+                    foto = row.foto;
+                    textarea = row.comments;
+
+        }
+
+            if(AantalLagen == "1"){
+         disp2 = "none";
+         disp3 = "none";
+         disp4 = "none";
     }
+    if(AantalLagen == "2"){
+         disp2 = "block";
+         disp3 = "none";
+         disp4 = "none";
+    }
+    if(AantalLagen == "3"){
+         disp2 = "block";
+         disp3 = "block";
+         disp4 = "none";
+    }
+    if(AantalLagen == "4"){
+         disp2 = "block";
+         disp3 = "block";
+         disp4 = "block";
+    }
+
+        }
+        if(IsPost){
+            Response.Redirect("index.cshtml");
+        }
+}
 
 <!DOCTYPE html>
 <html>
@@ -45,62 +129,73 @@
         <meta charset="utf-8" />
         <title>Verstuur bestelling.</title>
     </head>
-<body>
+    <body>
 
-  <div id="top-header"><h2 id="Hoofdtekst">Controleer uw gegevens.</h2></div>
+        <a href="index.cshtml"><div id="top-header"><h2 id="Hoofdtekst">Controleer uw gegevens.</h2></div></a>
 
-<form action="MAILTO:nic@wielens.net?subject=Taart Bestelling." method="post" enctype="text/plain">
-<div id="container">
-<div class="col-sm-6 col-md-6">
-<div id="KlantGegevens" class="col-sm-6 col-md-6">
-        <h3>Uw gegevens:</h3>
-            <input type="hidden" name="Klant informatie">
+        <form action="MAILTO:ducod16@gmail.com?subject=Taart Bestelling. "method="post" enctype="text/plain">
+            <div id="col-sm-12 col-md-12">
+                <div class="col-sm-6 col-md-6">
+                    <div id="KlantGegevens">
+
+                        <input type="hidden" name="Klant informatie">
             Volledige naam:<br>
-            <input type="text" name="Naam" value="@Naam"><br>
+                        <input type="text" name="Naam" value="@Naam"></br>
             Adres:<br>
-            <input type="text" name="Adres" value="@Adres"><br>
+                        <input type="text" name="Adres" value="@Adres"></br>
             Postcode:<br>
-            <input type="text" name="Postcode" value="@Postcode" maxlength="6"><br>
+                        <input type="text" name="Postcode" value="@Postcode" maxlength="6"></br>
             Woonplaats:<br>
-            <input type="text" name="Woonplaats" value="@Woonplaats"><br>
+                        <input type="text" name="Woonplaats" value="@Woonplaats"></br>
             Telefoon nummer:<br>
-            <input type="text" name="Telefoonnummer" value="@Telefoonnummer" maxlength="11"><br>
+                        <input type="text" name="Telefoonnummer" value="@Telefoonnummer" maxlength="11"></br>
             Datum:<br>
-            <input type="date" name="Datum" value="@GewensteDatum"><br><br>
-                <div id="knoppen">
+                        <input type="date" name="Datum" value="@GewensteDatum"></br>
+                        E-mail:<br>
+                        <input type="text" name="Datum" value="@Email"></br>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6 col-md-6">
+                    <div id="TaartInformatie">
+
+                        <input type="hidden" name="Taart informatie">
+        Taart type:<br>
+                        <input type="text" name="Taart-Type" value="@type"><br>
+        Aantal personen:<br>
+                        <input type="text" name="Taart-Type" value="@AantalPersonen"><br>
+                        <div id="laag1">
+        Laag 1:<br>
+                            <input type="text" name="Laag 1" value="@bekleding1 @type1 @vulling1 @decoratie1"><br>
+                        </div>
+                        <div id="laag2" style="display: @disp2;">
+        Laag 2:<br>
+                        <input type="text" name="Laag 2" value="@bekleding2 @type2 @vulling2 @decoratie2"><br></div>
+                            <div id="laag3" style="display: @disp3;">
+        Laag 3:<br>
+                        <input type="text" name="Laag 3" value="@bekleding3 @type3 @vulling3 @decoratie3"><br></div>
+                        <div id="laag4" style="display: @disp4;">
+        Laag 4:<br>
+                        <input type="text" name="Laag 4" value="@bekleding4 @type4 @vulling4 @decoratie4"><br></div>
+        Allergieën:<br>
+                        <input type="text" name="Allergie" value="@noten @lactose @gluten"><br>
+        Prijs indicatie:<br>
+                        <input type="text" name="Prijs" value="@PrijsIndicatie"><br>
+        Foto (link):<br>
+                        <input type="text" name="Foto" value="@foto"><br>
+                        comments:<br>
+                        <textarea disabled name="texta">@textarea</textarea><br>
+                    </div>
+                </div>
+            </div>
+
+            <div id="knoppen">
                 <input type="submit" value="Ja, het klopt.">
                 <input type="reset" value="Herstellen.">
-                </div>
-</div>
-</div>
+            </div>
 
+        </form>
 
-<div class="col-sm-6 col-md-6">
-<div id="TaartInformatie">
-    <h3>Taart informatie:</h3>
-        <input type="hidden" name="Taart informatie">
-        Taart type:<br>
-        <input type="text" name="Taart-Type" value="Trouwtaart"><br>
-        Aantal personen:<br>
-        <input type="text" name="Taart-Type" value="@AantalPersonen"><br>
-        Laag 1:<br>
-        <input type="text" name="Laag 1" value="Fondant"><br>
-        Laag 2:<br>
-        <input type="text" name="Laag 2" value="Fondant"><br>
-        Laag 3:<br>
-        <input type="text" name="Laag 3" value="Fondant"><br>
-        Laag 4:<br>
-        <input type="text" name="Laag 4" value="Fondant"><br>
-        Allergieën:<br>
-        <input type="text" name="Allergie" value="@noten"><br>
-        Prijs indicatie:<br>
-        <input type="text" name="Prijs" value="@PrijsIndicatie"><br>
-        Foto (link):<br>
-        <input type="text" name="Foto"><br>
-</div>
-</div>
-</div>
-</form>
-
-</body>
+    </body>
 </html>

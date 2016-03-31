@@ -1,14 +1,70 @@
 ﻿@{
 
+    var disp2 ="";
+    var disp3="";
+    var disp4="";
+     var Type= "";
+     var Bekleding= "";
+     var Vulling= "";
+     var Decoratie= "";
+     
     var db = Database.Open("FONDANTI2");
+    var selectQueryStringlaag = "SELECT * FROM Factuur WHERE ID=1";
+    foreach(var row in db.Query(selectQueryStringlaag)){
 
-    var selectQueryStringBekleding = "SELECT * FROM Ingredienten WHERE CatID=1";
-    var selectQueryStringType = "SELECT * FROM Ingredienten WHERE CatID=2";
-    var selectQueryStringVulling = "SELECT * FROM Ingredienten WHERE CatID=3";
-    var selectQueryStringDecoratie = "SELECT * FROM Ingredienten WHERE CatID=4";
-    if(IsPost && Request.Form["Action"] == "Trouwtaart2"){
-        //var db = Database.Open("FONDANTI2");
-        //var updateCommand = "UPDATE taart SET bekleding";
+    if(row.lagen == "1"){
+         disp2 = "none";
+         disp3 = "none";
+         disp4 = "none";
+    }
+    if(row.lagen == "2"){
+         disp2 = "block";
+         disp3 = "none";
+         disp4 = "none";
+    }
+    if(row.lagen == "3"){
+         disp2 = "block";
+         disp3 = "block";
+         disp4 = "none";
+    }
+    if(row.lagen == "4"){
+         disp2 = "block";
+         disp3 = "block";
+         disp4 = "block";
+    }
+    }
+    var selectQueryStringBekleding = "SELECT * FROM Ingredienten WHERE CatID=1 AND Beschikbaar='true'";
+    var selectQueryStringType = "SELECT * FROM Ingredienten WHERE CatID=2 AND Beschikbaar='true'";
+    var selectQueryStringVulling = "SELECT * FROM Ingredienten WHERE CatID=3 AND Beschikbaar='true'";
+    var selectQueryStringDecoratie = "SELECT * FROM Ingredienten WHERE CatID=4 AND Beschikbaar='true'";
+    if(IsPost){
+        Bekleding = Request.Form["drop1"];
+        Type = Request.Form["drop2"];
+        Vulling = Request.Form["drop3"];
+        Decoratie = Request.Form["drop4"];
+        var updateCommand1 = "UPDATE Lagen SET Bekleding=@0, Type=@1, Vulling=@2, Decoratie=@3 WHERE LaagID=1";
+        db.Execute(updateCommand1, Bekleding, Type, Vulling, Decoratie);
+
+        Bekleding = Request.Form["drop5"];
+        Type = Request.Form["drop6"];
+        Vulling = Request.Form["drop7"];
+        Decoratie = Request.Form["drop8"];
+        var updateCommand2 = "UPDATE Lagen SET Bekleding=@0, Type=@1, Vulling=@2, Decoratie=@3 WHERE LaagID=2";
+        db.Execute(updateCommand2, Bekleding, Type, Vulling, Decoratie);
+        
+        Bekleding = Request.Form["drop9"];
+        Type = Request.Form["drop10"];
+        Vulling = Request.Form["drop11"];
+        Decoratie = Request.Form["drop12"];
+        var updateCommand3 = "UPDATE Lagen SET Bekleding=@0, Type=@1, Vulling=@2, Decoratie=@3 WHERE LaagID=3";
+        db.Execute(updateCommand3, Bekleding, Type, Vulling, Decoratie);
+
+        Bekleding = Request.Form["drop13"];
+        Type = Request.Form["drop14"];
+        Vulling = Request.Form["drop15"];
+        Decoratie = Request.Form["drop16"];
+        var updateCommand4 = "UPDATE Lagen SET Bekleding=@0, Type=@1, Vulling=@2, Decoratie=@3 WHERE LaagID=4";
+        db.Execute(updateCommand4, Bekleding, Type, Vulling, Decoratie);
         Response.Redirect("stap3-1.cshtml");
     }
 
@@ -40,21 +96,14 @@
                         <div id="progressbar" style="background-color: #8A0B4B; width: 50%; height: 100%;"></div>
                     </div>
                     <div class="contain">
+
                         <div class="col-sm-6 col-md-6">
-                            <select style="font-size: 20px" name="drop1" required id="stap3">
-                                <option value="" disabled selected style="display: none;">laag selector</option>
-                                <option value="1">laag 1</option>
-                                <option value="2">laag 2</option>
-                                <option value="3">laag 3</option>
-                                <option value="4">laag 4</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-6 col-md-6">
+                            laag 1
                             <div class="col-sm-12 col-md-12">
-                                <select style="font-size: 20px" name="drop2" required id="stap4">
+                                <select style="font-size: 20px" name="drop1" required id="stap4">
                                     @foreach(var row in db.Query(selectQueryStringBekleding)){
                                         <option value="" disabled selected style="display: none;">Bekleding</option>
-                                        <option value="1 laag">@row.Naam</option>
+                                        <option value="@row.Naam">@row.Naam</option>
                                     }
 
                                 </select>
@@ -63,23 +112,131 @@
                                 <select style="font-size: 20px" name="drop2" required id="stap4-2">
                                     @foreach(var row in db.Query(selectQueryStringType)){
                                         <option value="" disabled selected style="display: none;">Type</option>
-                                        <option value="1 laag">@row.Naam</option>
+                                        <option value="@row.Naam">@row.Naam</option>
                                     }
                                 </select>
                             </div>
                             <div class="col-sm-12 col-md-12">
-                                <select style="font-size: 20px" name="drop2" required id="stap4-3">
+                                <select style="font-size: 20px" name="drop3" required id="stap4-3">
                                     @foreach(var row in db.Query(selectQueryStringVulling)){
                                         <option value="" disabled selected style="display: none;">Vulling</option>
-                                        <option value="1 laag">@row.Naam</option>
+                                        <option value="@row.Naam">@row.Naam</option>
                                     }
                                 </select>
                             </div>
                             <div class="col-sm-12 col-md-12">
-                                <select style="font-size: 20px" name="drop2" required id="stap4-4">
+                                <select style="font-size: 20px" name="drop4" required id="stap4-4">
                                     @foreach(var row in db.Query(selectQueryStringDecoratie)){
                                         <option value="" disabled selected style="display: none;">Decoratie</option>
-                                        <option value="1 laag">@row.Naam</option>
+                                        <option value="@row.Naam">@row.Naam</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6" style="display: @disp2;">
+                              laag 2
+                            <div class="col-sm-12 col-md-12">
+                                <select style="font-size: 20px" name="drop5" required id="stap4">
+                                    @foreach(var row in db.Query(selectQueryStringBekleding)){
+                                        <option value="" disabled selected style="display: none;">Bekleding</option>
+                                        <option value="@row.Naam">@row.Naam</option>
+                                    }
+
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <select style="font-size: 20px" name="drop6" required id="stap4-2">
+                                    @foreach(var row in db.Query(selectQueryStringType)){
+                                        <option value="" disabled selected style="display: none;">Type</option>
+                                        <option value="@row.Naam">@row.Naam</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <select style="font-size: 20px" name="drop7" required id="stap4-3">
+                                    @foreach(var row in db.Query(selectQueryStringVulling)){
+                                        <option value="" disabled selected style="display: none;">Vulling</option>
+                                        <option value="@row.Naam">@row.Naam</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <select style="font-size: 20px" name="drop8" required id="stap4-4">
+                                    @foreach(var row in db.Query(selectQueryStringDecoratie)){
+                                        <option value="" disabled selected style="display: none;">Decoratie</option>
+                                        <option value="@row.Naam">@row.Naam</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6" style="display: @disp3;">
+                              laag 3
+                            <div class="col-sm-12 col-md-12">
+                                <select style="font-size: 20px" name="drop9" required id="stap4">
+                                    @foreach(var row in db.Query(selectQueryStringBekleding)){
+                                        <option value="" disabled selected style="display: none;">Bekleding</option>
+                                        <option value="@row.Naam">@row.Naam</option>
+                                    }
+
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <select style="font-size: 20px" name="drop10" required id="stap4-2">
+                                    @foreach(var row in db.Query(selectQueryStringType)){
+                                        <option value="" disabled selected style="display: none;">Type</option>
+                                        <option value="@row.Naam">@row.Naam</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <select style="font-size: 20px" name="drop11" required id="stap4-3">
+                                    @foreach(var row in db.Query(selectQueryStringVulling)){
+                                        <option value="" disabled selected style="display: none;">Vulling</option>
+                                        <option value="@row.Naam">@row.Naam</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <select style="font-size: 20px" name="drop12" required id="stap4-4">
+                                    @foreach(var row in db.Query(selectQueryStringDecoratie)){
+                                        <option value="" disabled selected style="display: none;">Decoratie</option>
+                                        <option value="@row.Naam">@row.Naam</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6" style="display: @disp4;">
+                              laag 4
+                            <div class="col-sm-12 col-md-12">
+                                <select style="font-size: 20px" name="drop13" required id="stap4">
+                                    @foreach(var row in db.Query(selectQueryStringBekleding)){
+                                        <option value="" disabled selected style="display: none;">Bekleding</option>
+                                        <option value="@row.Naam">@row.Naam</option>
+                                    }
+
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <select style="font-size: 20px" name="drop14" required id="stap4-2">
+                                    @foreach(var row in db.Query(selectQueryStringType)){
+                                        <option value="" disabled selected style="display: none;">Type</option>
+                                        <option value="@row.Naam">@row.Naam</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <select style="font-size: 20px" name="drop15" required id="stap4-3">
+                                    @foreach(var row in db.Query(selectQueryStringVulling)){
+                                        <option value="" disabled selected style="display: none;">Vulling</option>
+                                        <option value="@row.Naam">@row.Naam</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <select style="font-size: 20px" name="drop16" required id="stap4-4">
+                                    @foreach(var row in db.Query(selectQueryStringDecoratie)){
+                                        <option value="" disabled selected style="display: none;">Decoratie</option>
+                                        <option value="@row.Naam">@row.Naam</option>
                                     }
                                 </select>
                             </div>
@@ -95,7 +252,7 @@
 
         <div id="top-header">
             <div class="content-center">
-                <div id="header-logo"><img src="img/fondanti-logo.png" alt="Fondanti logo" /></div>
+                <a href="index.cshtml"><div id="header-logo"><img src="img/fondanti-logo.png" alt="Fondanti logo" /></div></a>
                 <div id="header-phone-number">
                     <p>
                         <img src="img/Taartwinkelkar2.png" alt="Ga naar de taarten generator">

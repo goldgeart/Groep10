@@ -1,7 +1,569 @@
 ﻿@{
-      if(IsPost && Request.Form["Action"] == "Trouwtaart3"){
+    double Fondant;	
+    double Marsepein;
+    double Chocolade;
+    double RedVelvet;
+    double Biscuitdeeg;
+    double Champagneroommetverseframbozen;
+    double Geleroommetoreovulling;
+    double Kindervulling;
+    double Eenvoudig;	
+    double Gemiddeld;
+    double Uitgebreid;
+    double Vanille;
 
-        Response.Redirect("email.cshtml");
+  var db = Database.Open("FONDANTI2");
+    var prijs1 = "SELECT * FROM Ingredienten WHERE IngredientenID=1";
+    var rowp1 = db.QuerySingle(prijs1, 1);
+         Fondant = Convert.ToDouble(rowp1.Prijs);
+    var prijs2 = "SELECT * FROM Ingredienten WHERE IngredientenID=2";
+    var rowp2 = db.QuerySingle(prijs2, 1);
+         Marsepein = Convert.ToDouble(rowp2.Prijs);
+    var prijs3 = "SELECT * FROM Ingredienten WHERE IngredientenID=3";
+    var rowp3 = db.QuerySingle(prijs3, 1);
+         Chocolade = Convert.ToDouble(rowp3.Prijs);
+    var prijs4 = "SELECT * FROM Ingredienten WHERE IngredientenID=4";
+    var rowp4 = db.QuerySingle(prijs4, 1);
+         RedVelvet = Convert.ToDouble(rowp4.Prijs);
+    var prijs5 = "SELECT * FROM Ingredienten WHERE IngredientenID=5";
+    var rowp5 = db.QuerySingle(prijs5, 1);
+         Biscuitdeeg = Convert.ToDouble(rowp5.Prijs);
+    var prijs6 = "SELECT * FROM Ingredienten WHERE IngredientenID=6";
+    var rowp6 = db.QuerySingle(prijs6, 1);
+         Champagneroommetverseframbozen = Convert.ToDouble(rowp6.Prijs);
+    var prijs7 = "SELECT * FROM Ingredienten WHERE IngredientenID=7";
+    var rowp7 = db.QuerySingle(prijs7, 1);
+         Geleroommetoreovulling = Convert.ToDouble(rowp7.Prijs);
+    var prijs8 = "SELECT * FROM Ingredienten WHERE IngredientenID=8";
+    var rowp8 = db.QuerySingle(prijs8, 1);
+         Kindervulling = Convert.ToDouble(rowp8.Prijs);
+    var prijs9 = "SELECT * FROM Ingredienten WHERE IngredientenID=9";
+    var rowp9 = db.QuerySingle(prijs9, 1);
+         Eenvoudig = Convert.ToDouble(rowp9.Prijs);
+    var prijs10 = "SELECT * FROM Ingredienten WHERE IngredientenID=10";
+    var rowp10 = db.QuerySingle(prijs10, 1);
+         Gemiddeld = Convert.ToDouble(rowp10.Prijs);
+    var prijs11 = "SELECT * FROM Ingredienten WHERE IngredientenID=11";
+    var rowp11 = db.QuerySingle(prijs11, 1);
+         Uitgebreid = Convert.ToDouble(rowp11.Prijs);
+    var prijs12 = "SELECT * FROM Ingredienten WHERE IngredientenID=39";
+    var rowp12 = db.QuerySingle(prijs12, 1);
+         Vanille = Convert.ToDouble(rowp12.Prijs);
+
+
+    double personen = 0;
+    double b1prijs = 0;
+    double b2prijs = 0;
+    double b3prijs = 0;
+    double b4prijs = 0;
+    double t1prijs = 0;
+    double t2prijs = 0;
+    double t3prijs = 0;
+    double t4prijs = 0;
+    double v1prijs = 0;
+    double v2prijs = 0;
+    double v3prijs = 0;
+    double v4prijs = 0;
+    double d1prijs = 0;
+    double d2prijs = 0;
+    double d3prijs = 0;
+    double d4prijs = 0;
+    double lagen = 0;
+    var bekleding = "";
+    var type = "";
+    var vulling = "";
+    var decoratie = ""; 
+    double prijs1l = 0;
+    double prijs2l = 0;
+    double prijs3l = 0;
+    double prijs4l = 0;
+    double prijs = 0;
+
+
+
+
+
+    var mensen = "SELECT * FROM Factuur WHERE ID=1";
+    var row = db.QuerySingle(mensen, 1);
+    if(row != null){
+        personen = Convert.ToDouble(row.personen);
+        lagen = Convert.ToDouble(row.lagen);
+
+    if(lagen == 1){
+        var laag = "SELECT * FROM Lagen WHERE LaagID=1";
+        var row2 = db.QuerySingle(laag, 1);
+        bekleding = row2.Bekleding;
+        type = row2.Type;
+        vulling = row2.Vulling;
+        decoratie = row2.Decoratie;
+        if(bekleding == "Fondant"){
+            b1prijs = personen * Fondant;
+        }
+        if(bekleding == "Marsepein"){
+            b1prijs = personen * Marsepein;
+        }
+        if(bekleding == "Vanille"){
+            b1prijs = personen * Vanille;
+        }
+        if(type == "Chocolade"){
+            t1prijs = personen * Chocolade;
+        }
+        if(type == "Red Velvet"){
+            t1prijs = personen * RedVelvet;
+        }
+        if(type == "Biscuitdeeg"){
+            t1prijs = personen * Biscuitdeeg;
+        }
+        if(vulling == "Champagneroom met verse frambozen"){
+            v1prijs = personen * Champagneroommetverseframbozen;
+        }
+        if(vulling == "Gele room met oreo vulling"){
+            v1prijs = personen * Geleroommetoreovulling;
+        }
+        if(vulling == "Kindervulling"){
+            v1prijs = personen * Kindervulling;
+        }
+        if(decoratie == "Eenvoudig"){
+            d1prijs = personen * Eenvoudig;
+        }
+        if(decoratie == "Gemiddeld"){
+            d1prijs = personen * Gemiddeld;
+        }
+        if(decoratie == "Uitgebreid"){
+            d1prijs = personen * Uitgebreid;
+        }
+        prijs = b1prijs + v1prijs + t1prijs + d1prijs;
+
+    }
+    if(lagen == 2){
+        var laag = "SELECT * FROM Lagen WHERE LaagID=1";
+        var row2 = db.QuerySingle(laag, 1);
+        bekleding = row2.Bekleding;
+        type = row2.Type;
+        vulling = row2.Vulling;
+        decoratie = row2.Decoratie;
+        if(bekleding == "Fondant"){
+            b1prijs = personen * Fondant;
+        }
+        if(bekleding == "Marsepein"){
+            b1prijs = personen * Marsepein;
+        }
+        if(bekleding == "Vanille"){
+            b1prijs = personen * Vanille;
+        }
+        if(type == "Chocolade"){
+            t1prijs = personen * Chocolade;
+        }
+        if(type == "Red Velvet"){
+            t1prijs = personen * RedVelvet;
+        }
+        if(type == "Biscuitdeeg"){
+            t1prijs = personen * Biscuitdeeg;
+        }
+        if(vulling == "Champagneroom met verse frambozen"){
+            v1prijs = personen * Champagneroommetverseframbozen;
+        }
+        if(vulling == "Gele room met oreo vulling"){
+            v1prijs = personen * Geleroommetoreovulling;
+        }
+        if(vulling == "Kindervulling"){
+            v1prijs = personen * Kindervulling;
+        }
+        if(decoratie == "Eenvoudig"){
+            d1prijs = personen * Eenvoudig;
+        }
+        if(decoratie == "Gemiddeld"){
+            d1prijs = personen * Gemiddeld;
+        }
+        if(decoratie == "Uitgebreid"){
+            d1prijs = personen * Uitgebreid;
+        }
+        prijs1l = b1prijs + v1prijs + t1prijs + d1prijs;
+        prijs1l = prijs1l * 0.6;
+        var laag2 = "SELECT * FROM Lagen WHERE LaagID=2";
+        var row3 = db.QuerySingle(laag, 1);
+        bekleding = row2.Bekleding;
+        type = row2.Type;
+        vulling = row2.Vulling;
+        decoratie = row2.Decoratie;
+        if(bekleding == "Fondant"){
+            b2prijs = personen * Fondant;
+        }
+        if(bekleding == "Marsepein"){
+            b2prijs = personen * Marsepein;
+        }
+        if(bekleding == "Vanille"){
+            b2prijs = personen * Vanille;
+        }
+        if(type == "Chocolade"){
+            t2prijs = personen * Chocolade;
+        }
+        if(type == "Red Velvet"){
+            t2prijs = personen * RedVelvet;
+        }
+        if(type == "Biscuitdeeg"){
+            t2prijs = personen * Biscuitdeeg;
+        }
+        if(vulling == "Champagneroom met verse frambozen"){
+            v2prijs = personen * Champagneroommetverseframbozen;
+        }
+        if(vulling == "Gele room met oreo vulling"){
+            v2prijs = personen * Geleroommetoreovulling;
+        }
+        if(vulling == "Kindervulling"){
+            v2prijs = personen * Kindervulling;
+        }
+        if(decoratie == "Eenvoudig"){
+            d2prijs = personen * Eenvoudig;
+        }
+        if(decoratie == "Gemiddeld"){
+            d2prijs = personen * Gemiddeld;
+        }
+        if(decoratie == "Uitgebreid"){
+            d2prijs = personen * Uitgebreid;
+        }
+        prijs2l = b2prijs + v2prijs + t2prijs + d2prijs;
+        prijs2l = prijs2l * 0.4;
+        prijs = prijs1l + prijs2l;
+
+
+    }
+    if(lagen == 3){
+        var laag = "SELECT * FROM Lagen WHERE LaagID=1";
+        var row2 = db.QuerySingle(laag, 1);
+        bekleding = row2.Bekleding;
+        type = row2.Type;
+        vulling = row2.Vulling;
+        decoratie = row2.Decoratie;
+        if(bekleding == "Fondant"){
+            b1prijs = personen * Fondant;
+        }
+        if(bekleding == "Marsepein"){
+            b1prijs = personen * Marsepein;
+        }
+        if(bekleding == "Vanille"){
+            b1prijs = personen * Vanille;
+        }
+        if(type == "Chocolade"){
+            t1prijs = personen * Chocolade;
+        }
+        if(type == "Red Velvet"){
+            t1prijs = personen * RedVelvet;
+        }
+        if(type == "Biscuitdeeg"){
+            t1prijs = personen * Biscuitdeeg;
+        }
+        if(vulling == "Champagneroom met verse frambozen"){
+            v1prijs = personen * Champagneroommetverseframbozen;
+        }
+        if(vulling == "Gele room met oreo vulling"){
+            v1prijs = personen * Geleroommetoreovulling;
+        }
+        if(vulling == "Kindervulling"){
+            v1prijs = personen * Kindervulling;
+        }
+        if(decoratie == "Eenvoudig"){
+            d1prijs = personen * Eenvoudig;
+        }
+        if(decoratie == "Gemiddeld"){
+            d1prijs = personen * Gemiddeld;
+        }
+        if(decoratie == "Uitgebreid"){
+            d1prijs = personen * Uitgebreid;
+        }
+        prijs1l = b1prijs + v1prijs + t1prijs + d1prijs;
+        prijs1l = prijs1l * 0.45;
+        var laag2 = "SELECT * FROM Lagen WHERE LaagID=2";
+        var row3 = db.QuerySingle(laag, 1);
+        bekleding = row2.Bekleding;
+        type = row2.Type;
+        vulling = row2.Vulling;
+        decoratie = row2.Decoratie;
+        if(bekleding == "Fondant"){
+            b2prijs = personen * Fondant;
+        }
+        if(bekleding == "Marsepein"){
+            b2prijs = personen * Marsepein;
+        }
+        if(bekleding == "Vanille"){
+            b2prijs = personen * Vanille;
+        }
+        if(type == "Chocolade"){
+            t2prijs = personen * Chocolade;
+        }
+        if(type == "Red Velvet"){
+            t2prijs = personen * RedVelvet;
+        }
+        if(type == "Biscuitdeeg"){
+            t2prijs = personen * Biscuitdeeg;
+        }
+        if(vulling == "Champagneroom met verse frambozen"){
+            v2prijs = personen * Champagneroommetverseframbozen;
+        }
+        if(vulling == "Gele room met oreo vulling"){
+            v2prijs = personen * Geleroommetoreovulling;
+        }
+        if(vulling == "Kindervulling"){
+            v2prijs = personen * Kindervulling;
+        }
+        if(decoratie == "Eenvoudig"){
+            d2prijs = personen * Eenvoudig;
+        }
+        if(decoratie == "Gemiddeld"){
+            d2prijs = personen * Gemiddeld;
+        }
+        if(decoratie == "Uitgebreid"){
+            d2prijs = personen * Uitgebreid;
+        }
+        prijs2l = b2prijs + v2prijs + t2prijs + d2prijs;
+        prijs2l = prijs2l * 0.35;
+        var laag3 = "SELECT * FROM Lagen WHERE LaagID=3";
+        var row4 = db.QuerySingle(laag3, 1);
+        bekleding = row2.Bekleding;
+        type = row2.Type;
+        vulling = row2.Vulling;
+        decoratie = row2.Decoratie;
+        if(bekleding == "Fondant"){
+            b3prijs = personen * Fondant;
+        }
+        if(bekleding == "Marsepein"){
+            b3prijs = personen * Marsepein;
+        }
+        if(bekleding == "Vanille"){
+            b3prijs = personen * Vanille;
+        }
+        if(type == "Chocolade"){
+            t3prijs = personen * Chocolade;
+        }
+        if(type == "Red Velvet"){
+            t3prijs = personen * RedVelvet;
+        }
+        if(type == "Biscuitdeeg"){
+            t3prijs = personen * Biscuitdeeg;
+        }
+        if(vulling == "Champagneroom met verse frambozen"){
+            v3prijs = personen * Champagneroommetverseframbozen;
+        }
+        if(vulling == "Gele room met oreo vulling"){
+            v3prijs = personen * Geleroommetoreovulling;
+        }
+        if(vulling == "Kindervulling"){
+            v3prijs = personen * Kindervulling;
+        }
+        if(decoratie == "Eenvoudig"){
+            d3prijs = personen * Eenvoudig;
+        }
+        if(decoratie == "Gemiddeld"){
+            d3prijs = personen * Gemiddeld;
+        }
+        if(decoratie == "Uitgebreid"){
+            d3prijs = personen * Uitgebreid;
+        }
+        prijs3l = b3prijs + v3prijs + t3prijs + d3prijs;
+        prijs3l = prijs3l * 0.2;
+        prijs = prijs1l + prijs2l + prijs3l;
+    }
+    if(lagen == 4){
+        var laag = "SELECT * FROM Lagen WHERE LaagID=1";
+        var row2 = db.QuerySingle(laag, 1);
+        bekleding = row2.Bekleding;
+        type = row2.Type;
+        vulling = row2.Vulling;
+        decoratie = row2.Decoratie;
+        if(bekleding == "Fondant"){
+            b1prijs = personen * Fondant;
+        }
+        if(bekleding == "Marsepein"){
+            b1prijs = personen * Marsepein;
+        }
+        if(bekleding == "Vanille"){
+            b1prijs = personen * Vanille;
+        }
+        if(type == "Chocolade"){
+            t1prijs = personen * Chocolade;
+        }
+        if(type == "Red Velvet"){
+            t1prijs = personen * RedVelvet;
+        }
+        if(type == "Biscuitdeeg"){
+            t1prijs = personen * Biscuitdeeg;
+        }
+        if(vulling == "Champagneroom met verse frambozen"){
+            v1prijs = personen * Champagneroommetverseframbozen;
+        }
+        if(vulling == "Gele room met oreo vulling"){
+            v1prijs = personen * Geleroommetoreovulling;
+        }
+        if(vulling == "Kindervulling"){
+            v1prijs = personen * Kindervulling;
+        }
+        if(decoratie == "Eenvoudig"){
+            d1prijs = personen * Eenvoudig;
+        }
+        if(decoratie == "Gemiddeld"){
+            d1prijs = personen * Gemiddeld;
+        }
+        if(decoratie == "Uitgebreid"){
+            d1prijs = personen * Uitgebreid;
+        }
+        prijs1l = b1prijs + v1prijs + t1prijs + d1prijs;
+        prijs1l = prijs1l * 0.4;
+        var laag2 = "SELECT * FROM Lagen WHERE LaagID=2";
+        var row3 = db.QuerySingle(laag, 1);
+        bekleding = row2.Bekleding;
+        type = row2.Type;
+        vulling = row2.Vulling;
+        decoratie = row2.Decoratie;
+        if(bekleding == "Fondant"){
+            b2prijs = personen * Fondant;
+        }
+        if(bekleding == "Marsepein"){
+            b2prijs = personen * Marsepein;
+        }
+        if(bekleding == "Vanille"){
+            b2prijs = personen * Vanille;
+        }
+        if(type == "Chocolade"){
+            t2prijs = personen * Chocolade;
+        }
+        if(type == "Red Velvet"){
+            t2prijs = personen * RedVelvet;
+        }
+        if(type == "Biscuitdeeg"){
+            t2prijs = personen * Biscuitdeeg;
+        }
+        if(vulling == "Champagneroom met verse frambozen"){
+            v2prijs = personen * Champagneroommetverseframbozen;
+        }
+        if(vulling == "Gele room met oreo vulling"){
+            v2prijs = personen * Geleroommetoreovulling;
+        }
+        if(vulling == "Kindervulling"){
+            v2prijs = personen * Kindervulling;
+        }
+        if(decoratie == "Eenvoudig"){
+            d2prijs = personen * Eenvoudig;
+        }
+        if(decoratie == "Gemiddeld"){
+            d2prijs = personen * Gemiddeld;
+        }
+        if(decoratie == "Uitgebreid"){
+            d2prijs = personen * Uitgebreid;
+        }
+        prijs2l = b2prijs + v2prijs + t2prijs + d2prijs;
+        prijs2l = prijs2l * 0.3;
+        var laag3 = "SELECT * FROM Lagen WHERE LaagID=3";
+        var row4 = db.QuerySingle(laag3, 1);
+        bekleding = row2.Bekleding;
+        type = row2.Type;
+        vulling = row2.Vulling;
+        decoratie = row2.Decoratie;
+        if(bekleding == "Fondant"){
+            b3prijs = personen * Fondant;
+        }
+        if(bekleding == "Marsepein"){
+            b3prijs = personen * Marsepein;
+        }
+        if(bekleding == "Vanille"){
+            b3prijs = personen * Vanille;
+        }
+        if(type == "Chocolade"){
+            t3prijs = personen * Chocolade;
+        }
+        if(type == "Red Velvet"){
+            t3prijs = personen * RedVelvet;
+        }
+        if(type == "Biscuitdeeg"){
+            t3prijs = personen * Biscuitdeeg;
+        }
+        if(vulling == "Champagneroom met verse frambozen"){
+            v3prijs = personen * Champagneroommetverseframbozen;
+        }
+        if(vulling == "Gele room met oreo vulling"){
+            v3prijs = personen * Geleroommetoreovulling;
+        }
+        if(vulling == "Kindervulling"){
+            v3prijs = personen * Kindervulling;
+        }
+        if(decoratie == "Eenvoudig"){
+            d3prijs = personen * Eenvoudig;
+        }
+        if(decoratie == "Gemiddeld"){
+            d3prijs = personen * Gemiddeld;
+        }
+        if(decoratie == "Uitgebreid"){
+            d3prijs = personen * Uitgebreid;
+        }
+        prijs3l = b3prijs + v3prijs + t3prijs + d3prijs;
+        prijs3l = prijs3l * 0.2;
+        var laag4 = "SELECT * FROM Lagen WHERE LaagID=4";
+        var row5 = db.QuerySingle(laag4, 1);
+        bekleding = row2.Bekleding;
+        type = row2.Type;
+        vulling = row2.Vulling;
+        decoratie = row2.Decoratie;
+        if(bekleding == "Fondant"){
+            b4prijs = personen * Fondant;
+        }
+        if(bekleding == "Marsepein"){
+            b4prijs = personen * Marsepein;
+        }
+        if(bekleding == "Vanille"){
+            b4prijs = personen * Vanille;
+        }
+        if(type == "Chocolade"){
+            t4prijs = personen * Chocolade;
+        }
+        if(type == "Red Velvet"){
+            t4prijs = personen * RedVelvet;
+        }
+        if(type == "Biscuitdeeg"){
+            t4prijs = personen * Biscuitdeeg;
+        }
+        if(vulling == "Champagneroom met verse frambozen"){
+            v4prijs = personen * Champagneroommetverseframbozen;
+        }
+        if(vulling == "Gele room met oreo vulling"){
+            v4prijs = personen * Geleroommetoreovulling;
+        }
+        if(vulling == "Kindervulling"){
+            v4prijs = personen * Kindervulling;
+        }
+        if(decoratie == "Eenvoudig"){
+            d4prijs = personen * Eenvoudig;
+        }
+        if(decoratie == "Gemiddeld"){
+            d4prijs = personen * Gemiddeld;
+        }
+        if(decoratie == "Uitgebreid"){
+            d4prijs = personen * Uitgebreid;
+        }
+        prijs4l = b4prijs + v4prijs + t4prijs + d4prijs;
+        prijs4l = prijs4l * 0.1;
+        prijs = prijs1l + prijs2l + prijs3l + prijs4l;
+    }
+    }
+    var foto= "";
+    WebImage photo = null;
+    var newFileName = "";
+    var imagePath = "";
+    var comments="";
+    var Prijsindicatie= "";
+      if(IsPost){
+          photo = WebImage.GetImageFromRequest();
+          if (photo != null)
+          {
+              newFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(photo.FileName);
+              imagePath = @"images\" + newFileName;
+              
+              photo.Save(@"~\" + imagePath); 
+          }
+          foto = "http://localhost:20641/" + imagePath;
+          comments = Request.Form["textarea"];
+          Prijsindicatie = prijs.ToString();
+          var updateCommand ="UPDATE Factuur SET comments=@0, Prijsindicatie=@1, foto=@2 WHERE ID=1";
+          db.Execute(updateCommand, comments, Prijsindicatie, foto);
+        Response.Redirect("factuur-1.cshtml");
     }  
 
 }
@@ -19,34 +581,43 @@
         <link href="css/reset.css" rel="stylesheet" type="text/css" />
         <link href="css/fondanti.css" rel="stylesheet" type="text/css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        
+
     </head>
     <body>
 
-            <div id="shop" style="display: block;">
-                <div id="trouwtaart-3">
-                    <form method="post">
-                        <input type="hidden" name="Action" value="Trouwtaart3" />
-                        <div id="progress" style="height: 20px; background-color: #fff;">
-                            <div id="progressbar" style="background-color: #8A0B4B; width: 75%; height: 100%;"></div>
+        <div id="shop" style="display: block;">
+            <div id="trouwtaart-3">
+
+                <form action="" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="Action" value="Trouwtaart3" />
+                    <div id="progress" style="height: 20px; background-color: #fff;">
+                        <div id="progressbar" style="background-color: #8A0B4B; width: 75%; height: 100%;"></div>
+                    </div>
+                    <div class="contain">
+
+                        <div class="col-sm-6 col-md-6">
+                            <div class="col-sm-12 col-md-12"><label for="file">Upload Plaatje:</label>
+                                                             <input type="file" name="Image" id="file"/></div>
                         </div>
-                        <div class="contain">
-                            <div class="col-sm-6 col-md-6">
-                                <div class="col-sm-12 col-md-12"><div id="stap5">plak hier de link van een foto die u als voorbeeld wil gebruiken.</div></div>
-                                <div class="col-sm-12 col-md-12"><input type="text" value="" id="stap5-2"></div>
-                            </div>
-                            <div class="col-sm-6 col-md-6">
-                                <textarea id="stap6" rows="4">ERROR!NIETVERGETENSchrijf hier extra informatie als het nodig is...</textarea>
-                            </div>
+                        <div class="col-sm-6 col-md-6">
+                            <textarea name="textarea" maxlength="250" id="stap6" rows="4">Schrijf hier extra informatie als het nodig is...</textarea>
                         </div>
-                        <input style="font-size: 20px" type="submit" name="next" value="next" id="next3">
-                    </form>
-                </div>
+                    </div>
+                  
+                        <div class="col-sm-6 col-md-6">
+                    Prijs:<input id="prijs" name="prijs" style="font-size: 20px; width: 100px;" type="text" disabled value="@prijs euro">
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <input id="knop" style="font-size: 20px" type="submit" name="next" value="next">
+                        </div>
+                 
+                </form>
             </div>
+        </div>
 
         <div id="top-header">
             <div class="content-center">
-                <div id="header-logo"><img src="img/fondanti-logo.png" alt="Fondanti logo" /></div>
+                <a href="index.cshtml"><div id="header-logo"><img src="img/fondanti-logo.png" alt="Fondanti logo" /></div></a>
                 <div id="header-phone-number">
                     <p>
                         <a href="#webportal" onclick="document.getElementById('shop').style.display = 'block'; return false;"><img src="img/Taartwinkelkar2.png" alt="Ga naar de taarten generator"></a>

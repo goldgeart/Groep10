@@ -1,74 +1,26 @@
-@{
-    var aantalmensen= "";
-    var personen = "";
-    var ID = 1;
-    var lagen = "";
-    var stap2= "";
-    var prijsindicatie = "";
-    var type= "";
-    var gluten = "";
-    var lactose = "";
-    var noten = "";
+﻿@{ 
+    var datum = "";
+    var Naam = "";
+    var Adres = "";
+    var Postcode = "";
+    var Woonplaats = "";
+    var Telefoonnummer = "";
+    var Email = "";
+    var db = Database.Open("FONDANTI2");
+      if(IsPost){
+          datum = Request.Form["datum"];
+          Naam = Request.Form["naam"];
+          Adres = Request.Form["adres"];
+          Postcode = Request.Form["postcode"];
+          Woonplaats = Request.Form["woonplaats"];
+          Telefoonnummer = Request.Form["telefoonnummer"];
+          Email = Request.Form["email"];
+          var updateCommand = "UPDATE Factuur SET datum=@0, Naam=@1, Adres=@2, Postcode=@3, Woonplaats=@4, Telefoonnummer=@5, Email=@6 WHERE ID=1";
+          db.Execute(updateCommand, datum, Naam, Adres, Postcode, Woonplaats, Telefoonnummer, Email);
+        Response.Redirect("Email.cshtml");
+    }  
 
-
-    if(IsPost && Request.Form["Action"] == "Trouwtaart"){
-        prijsindicatie = Request.Form["aantalmensen"];
-        personen = Request.Form["aantalmensen"];
-        lagen = Request.Form["stap"];
-        type = "trouwtaart";
-        gluten = Request.Form["gluten"];
-        noten = Request.Form["noten"];
-        lactose = Request.Form["lactose"];
-        var db = Database.Open("FONDANTI2");
-        var updateCommand = "UPDATE Factuur SET prijsindicatie=@0, personen=@1, lagen=@2, type=@3, gluten=@4, noten=@5, lactose=@6 WHERE ID=1";
-        db.Execute(updateCommand, prijsindicatie, personen, lagen, type, gluten, noten, lactose);
-        Response.Redirect("stap2-1.cshtml");
-
-    }
-    if(IsPost && Request.Form["Action"] == "Trouwtaart2"){
-        prijsindicatie = Request.Form["aantalmensen"];
-        personen = Request.Form["aantalmensen"];
-        lagen = Request.Form["stap"];
-        type = "kinder taart";
-        gluten = Request.Form["gluten"];
-        noten = Request.Form["noten"];
-        lactose = Request.Form["lactose"];
-        var db = Database.Open("FONDANTI2");
-        var updateCommand = "UPDATE Factuur SET prijsindicatie=@0, personen=@1, lagen=@2, type=@3, gluten=@4, noten=@5, lactose=@6 WHERE ID=1";
-        db.Execute(updateCommand, prijsindicatie, personen, lagen, type, gluten, noten, lactose);
-        Response.Redirect("stap2-1.cshtml");
-
-    }
-       if(IsPost && Request.Form["Action"] == "Trouwtaart3"){
-        prijsindicatie = Request.Form["aantalmensen"];
-        personen = Request.Form["aantalmensen"];
-        lagen = Request.Form["stap"];
-        type = "volwassenen taart";
-        gluten = Request.Form["gluten"];
-        noten = Request.Form["noten"];
-        lactose = Request.Form["lactose"];
-        var db = Database.Open("FONDANTI2");
-        var updateCommand = "UPDATE Factuur SET prijsindicatie=@0, personen=@1, lagen=@2, type=@3, gluten=@4, noten=@5, lactose=@6 WHERE ID=1";
-        db.Execute(updateCommand, prijsindicatie, personen, lagen, type, gluten, noten, lactose);
-        Response.Redirect("stap2-1.cshtml");
-
-    }
-         if(IsPost && Request.Form["Action"] == "Trouwtaart4"){
-        prijsindicatie = Request.Form["aantalmensen"];
-        personen = Request.Form["aantalmensen"];
-        lagen = Request.Form["stap"];
-        type = "overige taart";
-        gluten = Request.Form["gluten"];
-        noten = Request.Form["noten"];
-        lactose = Request.Form["lactose"];
-        var db = Database.Open("FONDANTI2");
-        var updateCommand = "UPDATE Factuur SET prijsindicatie=@0, personen=@1, lagen=@2, type=@3, gluten=@4, noten=@5, lactose=@6 WHERE ID=1";
-        db.Execute(updateCommand, prijsindicatie, personen, lagen, type, gluten, noten, lactose);
-        Response.Redirect("stap2-1.cshtml");
-
-    }
-
-    }
+}
 <!DOCTYPE html>
 <html>
     <head>
@@ -83,60 +35,57 @@
         <link href="css/reset.css" rel="stylesheet" type="text/css" />
         <link href="css/fondanti.css" rel="stylesheet" type="text/css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#taart1").click(function () {
-                    $("#shop").load("trouwtaart.cshtml")
-                });
-            });
-        </script>
-        <script>
-            $(document).ready(function () {
-                $("#taart2").click(function () {
-                    $("#shop").load("kinderverjaardag.cshtml")
-                });
-            });
-        </script>
-        <script>
-            $(document).ready(function () {
-                $("#taart3").click(function () {
-                    $("#shop").load("volwassentaart.cshtml")
-                });
-            });
-        </script>
-        <script>
-            $(document).ready(function () {
-                $("#taart4").click(function () {
-                    $("#shop").load("overige.cshtml")
-                });
-            });
-        </script>
+
     </head>
     <body>
-        <form method="post"> 
-        <div id="shop">
-            <div class="col-sm-12 col-md-3">
-                <img src="img/taarttrouwen.svg" alt="trouwtaart" id="taart1" />
 
-            </div>
-            <div class="col-sm-12 col-md-3 ">
-                <img src="img/taartverjaardagkind.svg" alt="verjaardags taarten voor kinderen" id="taart2" />
+        <div id="shop" style="display: block;">
+            <div id="trouwtaart-4">
+                <form method="post">
+                    <div id="progress" style="height: 20px; background-color: #fff;">
+                        <div id="progressbar" style="background-color: #8A0B4B; width: 100%; height: 100%;"></div>
+                    </div>
+                    <div class="contain">
+                        <div class="col-sm-6 col-md-6">
+                            <div id="gegevens">
+                                <div class="col-sm-12 col-md-12">
+                Volledige naam:<input type="text" name="naam" id="naam" value="">
+                                </div>
+                                <div class="col-sm-12 col-md-12">
+                Adres:<input type="text" name="adres" id="naam" value="">
+                                </div>
+                                <div class="col-sm-12 col-md-12">
+                Postcode      :<input type="text" name="postcode" id="naam" value="">
+                                </div>
+                                <div class="col-sm-12 col-md-12">
+                Woonplaats:<input type="text" name="woonplaats" id="naam" value="">
+                                </div>
+                                <div class="col-sm-12 col-md-12">
+                Telefoonnummer:<input type="text" name="telefoonnummer" id="naam" value="">
+                                </div>
+                                <div class="col-sm-12 col-md-12">
+                e-mail adres  :<input type="text" name="email" id="naam" value="">
+                                </div>
+                                <div class="col-sm-12 col-md-12">
+                datum:<input type="date" name="datum" id="naam" value="">
+                                </div>
 
-            </div>
-            <div class="col-sm-12 col-md-3 ">
-                <img src="img/taartverjaardagvolwassene.svg" alt="verjaardags taarten voor volwassenen" id="taart3" />
+                            </div>
+                        </div>
 
+                        <div class="col-sm-6 col-md-6">
+                            <div id="factuur">
+                            </div>
+                        </div>
+                    </div>
+                    <input style="font-size: 20px" type="submit" name="next" value="next" id="next4">
+                </form>
             </div>
-            <div class="col-sm-12 col-md-3 ">
-                <img src="img/taartanders.svg" alt="taarten voor andere gelegenheden" id="taart4" />
 
-            </div>
         </div>
-            
-</form>
         <div id="top-header">
             <div class="content-center">
-                <div id="header-logo"><img src="img/fondanti-logo.png" alt="Fondanti logo" /></div>
+                <a href="index.cshtml"><div id="header-logo"><img src="img/fondanti-logo.png" alt="Fondanti logo" /></div></a>
                 <div id="header-phone-number">
                     <p>
                         <a href="#webportal" onclick="document.getElementById('shop').style.display = 'block'; return false;"><img src="img/Taartwinkelkar2.png" alt="Ga naar de taarten generator"></a>

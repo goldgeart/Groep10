@@ -3,17 +3,25 @@
     var personen = "";
     var ID = 1;
     var lagen = "";
-    var stap2= "";
+    var stap= "";
     var prijsindicatie = "";
+    var type= "trouwtaart";
+    var gluten = "";
+    var lactose = "";
+    var noten = "";
 
 
     if(IsPost && Request.Form["Action"] == "Trouwtaart"){
         prijsindicatie = Request.Form["aantalmensen"];
         personen = Request.Form["aantalmensen"];
-        lagen = Request.Form["stap2"];
+        lagen = Request.Form["stap"];
+        type = "trouwtaart";
+        gluten = Request.Form["gluten"];
+        noten = Request.Form["noten"];
+        lactose = Request.Form["lactose"];
         var db = Database.Open("FONDANTI2");
-        var updateCommand = "UPDATE Factuur SET prijsindicatie=@0, personen=@1, lagen=@2 WHERE ID=1";
-        db.Execute(updateCommand, prijsindicatie, personen, lagen);
+        var updateCommand = "UPDATE Factuur SET prijsindicatie=@0, personen=@1, lagen=@2, type=@3, gluten=@4, noten=@5, lactose=@6 WHERE ID=1";
+        db.Execute(updateCommand, prijsindicatie, personen, lagen, type, gluten, noten, lactose);
         Response.Redirect("stap2-1.cshtml");
 
     }
@@ -30,11 +38,11 @@
 
         <div id="contain">
             <div class="col-sm-4 col-md-4">
-            aantal mensen
-                <input style="font-size: 15px" type="number" name="aantalmensen" min="10" max="60" value="@aantalmensen" id="stap1">
+            aantal mensen(min. 15)
+                <input required style="font-size: 15px" type="number" name="aantalmensen" min="15" max="60" value="aantalmensen" id="stap1">
             </div>
             <div class="col-sm-4 col-md-4">
-                <select style="font-size: 20px" required name="stap2" id="stap2">
+                <select style="font-size: 20px" required name="stap" id="stap2">
                     <option value="" disabled selected style="display: none;">aantal lagen</option>
                     <option value="1">1 Laag</option>
                     <option value="2">2 Lagen</option>
@@ -44,9 +52,9 @@
             </div>
             <div class="col-sm-4 col-md-4">
                 <div id="check">
-                    <input style="font-size: 15px" type="checkbox" name="notenallergie" value="noten"> noten allergie<br>
-                    <input style="font-size: 15px" type="checkbox" name="lactoseintollerant" value="lactose"> lactose intollerantie<br>
-                    <input style="font-size: 15px" type="checkbox" name="glutenallergie" value="gluten"> gluten allergie<br>
+                    <input style="font-size: 15px" type="checkbox" name="noten" value="noten"> noten allergie<br>
+                    <input style="font-size: 15px" type="checkbox" name="lactose" value="lactose"> lactose intollerantie<br>
+                    <input style="font-size: 15px" type="checkbox" name="gluten" value="gluten"> gluten allergie<br>
                 </div>
             </div>
         </div>
