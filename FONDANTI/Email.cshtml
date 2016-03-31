@@ -1,6 +1,5 @@
 ﻿@{
 
-
     var Naam = "";
     var Adres = "";
     var Postcode = "";
@@ -36,6 +35,7 @@
     var decoratie2 = "";
     var decoratie3 = "";
     var decoratie4 = "";
+    
             var db = Database.Open("FONDANTI2");
 
     if(!IsPost){
@@ -133,14 +133,14 @@
 
         <a href="index.cshtml"><div id="top-header"><h2 id="Hoofdtekst">Controleer uw gegevens.</h2></div></a>
 
-        <form action="MAILTO:ducod16@gmail.com?subject=Taart Bestelling. "method="post" enctype="text/plain">
+        <form action="MAILTO:@Email,ducod16@gmail.com?subject=Taart Bestelling."method="post" enctype="text/plain">
             <div id="col-sm-12 col-md-12">
                 <div class="col-sm-6 col-md-6">
                     <div id="KlantGegevens">
 
-                        <input type="hidden" name="Klant informatie">
+                        <input type="hidden" name="=-=Klant informatie=-">
             Volledige naam:<br>
-                        <input type="text" name="Naam" value="@Naam"></br>
+                         <input type="text" name="Naam" value="@Naam"></br>
             Adres:<br>
                         <input type="text" name="Adres" value="@Adres"></br>
             Postcode:<br>
@@ -152,19 +152,18 @@
             Datum:<br>
                         <input type="date" name="Datum" value="@GewensteDatum"></br>
                         E-mail:<br>
-                        <input type="text" name="Datum" value="@Email"></br>
+                        <input type="text" name="E-mail" value="@Email"></br>
                     </div>
                 </div>
-
-
+                
                 <div class="col-sm-6 col-md-6">
                     <div id="TaartInformatie">
-
-                        <input type="hidden" name="Taart informatie">
+                        
+                        <input type="hidden" name="=-=Taart informatie=-">
         Taart type:<br>
                         <input type="text" name="Taart-Type" value="@type"><br>
         Aantal personen:<br>
-                        <input type="text" name="Taart-Type" value="@AantalPersonen"><br>
+                        <input type="text" name="Aantal-Personen" value="@AantalPersonen"><br>
                         <div id="laag1">
         Laag 1:<br>
                             <input type="text" name="Laag 1" value="@bekleding1 @type1 @vulling1 @decoratie1"><br>
