@@ -133,11 +133,11 @@
 
         <a href="index.cshtml"><div id="top-header"><h2 id="Hoofdtekst">Controleer uw gegevens.</h2></div></a>
 
-        <form action="MAILTO:@Email,ducod16@gmail.com?subject=Taart Bestelling."method="post" enctype="text/plain">
+        <form action="MAILTO:@Email, ducod16@gmail.com?subject=Taart Bestelling."method="post" enctype="text/plain">
             <div id="col-sm-12 col-md-12">
                 <div class="col-sm-6 col-md-6">
                     <div id="KlantGegevens">
-
+            <h1>Persoonlijke gegevens:</h1><br>
                         <input type="hidden" name="=-=Klant informatie=-">
             Volledige naam:<br>
                          <input type="text" name="Naam" value="@Naam"></br>
@@ -158,7 +158,7 @@
                 
                 <div class="col-sm-6 col-md-6">
                     <div id="TaartInformatie">
-                        
+        <h1>Taart informatie:</h1><br>               
                         <input type="hidden" name="=-=Taart informatie=-">
         Taart type:<br>
                         <input type="text" name="Taart-Type" value="@type"><br>
