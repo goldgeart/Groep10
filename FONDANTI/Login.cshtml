@@ -1,6 +1,10 @@
 ﻿@{
   var db = Database.Open("FONDANTI2");
 
+    if(!IsPost)
+    {
+        Session["Login"] = null;
+    }
     if(IsPost){
 
         string usrname = Request.Form["Username"].ToLower();

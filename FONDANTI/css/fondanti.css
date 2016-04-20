@@ -53,6 +53,10 @@ p {
     margin-left: 43px;
 }
 
+#logout{
+    float: left;
+}
+
 #LoginPaginaBody {
     margin-top: 75px;
 }
@@ -64,10 +68,12 @@ p {
 
 griddivAdminTop {
     margin-top: 5%;
+        margin-left: 20px;
 }
 
 #griddivAdmin {
     margin-top: 3%;
+    margin-left: 2%;
 }
 
 #DivTekst {
